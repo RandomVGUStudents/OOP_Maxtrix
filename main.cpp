@@ -3,7 +3,6 @@
 State Mode;
 Uis Main_Menu;
 Numbers Grid;
-Calculations Output;
 Result Box;
 
 
@@ -30,7 +29,6 @@ int main()
             Grid.registering_number();
             Box.designating_output_box();
             Box.draw();
-            Output.determinant();
         }
         EndDrawing();
     }

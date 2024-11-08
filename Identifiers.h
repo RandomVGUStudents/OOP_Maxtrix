@@ -4,14 +4,14 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
+#include <math.h>
 
 #define screenWidth 800 // ScreenWidth.
 #define screenHeight 600 // ScreenHeight.
 #define number_size 25 // Number font size.
 #define font_size 20 // Font size.
-#define matrix_box 9 // Numbers of matrix boxes.
-#define matrix_row 3
-#define matrix_columns 3
+#define matrix_rows 3 // Self explainatory.
+#define matrix_columns 3 // Self explainatory.
 
 class State //To define calculator state.
 {
@@ -62,23 +62,6 @@ class Numbers
     
     void designating_box(); 
     void draws();
-};
-
-class Calculations
-{
-    public:
-    bool first = false;
-
-    void determinant();
-    struct determinant_result
-    {
-        double two_x_two;
-
-        double block1;
-        double block2;
-        double block3;
-        double three_x_three;
-    };
 };
 
 class Result
