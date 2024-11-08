@@ -1,10 +1,17 @@
 #pragma once
+
+#ifndef Identifiers.h //header guard to prevent re-initiate of the file multiple times.
+#define Identifiers.h
+
 #include <raylib.h>
 #include <string>
 #include <vector>
 #include <iostream>
 #include <sstream>
 #include <math.h>
+
+// Custom headers
+#include <Calculations.hpp>
 
 #define screenWidth 800 // ScreenWidth.
 #define screenHeight 600 // ScreenHeight.
@@ -88,3 +95,5 @@ const char* floatToString(float value, int precision) {
     // Return the buffer as const char*
     return buffer;
 }*/
+
+#endif

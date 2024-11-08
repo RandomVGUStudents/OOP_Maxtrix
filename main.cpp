@@ -1,4 +1,4 @@
-#include "Identifiers.h"
+#include "Identifiers.hpp"
 
 State Mode;
 Uis Main_Menu;
@@ -18,12 +18,8 @@ int main()
         BeginDrawing();
         ClearBackground(RAYWHITE);
         Main_Menu.uis();
-        if(Mode.state == 0)
-        {
-        Mode.selection();
-        }
-        
-        if(Mode.state == 1)
+        if(Mode.state == 0) Mode.selection();
+        else if(Mode.state == 1)
         {
             Grid.draws();
             Grid.registering_number();
