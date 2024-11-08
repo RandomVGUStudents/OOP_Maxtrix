@@ -6,4 +6,12 @@
 // Custom headers
 #include <Identifiers.hpp>
 
+class Determinant
+{
+    private:
+    public:
+    
+    void determinant();
+};
+
 #endif
