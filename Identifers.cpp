@@ -8,7 +8,7 @@ Uis matrix_calculator;
 
 input_box default_input_box_size = {70, 50};
 
-Numbers box[9];
+Numbers box[3][3];
 
 Calculations two_x_two_state;
 Calculations::determinant_result result;
@@ -43,13 +43,16 @@ void Numbers::designating_box()
     float offset_y = 60, offset_x = 400, offset_y_value = 1;
     for(int t = 0; t < matrix_box; ++t)
     { 
-        if (t % 3 == 0)
+        for(int u = 0; u < matrix_columns; ++u)
         {
-            offset_x -= 80; 
-            offset_y_value = 1;
+            if (t % 3 == 0)
+            {
+                offset_x -= 80; 
+                offset_y_value = 1;
+            }
+            box[t][u].rect = {screenWidth/2.0f - offset_x, offset_y * offset_y_value, default_input_box_size.x, default_input_box_size.y};
+            offset_y_value++;
         }
-        box[t].rect = {screenWidth/2.0f - offset_x, offset_y * offset_y_value, default_input_box_size.x, default_input_box_size.y};
-        offset_y_value++;
     }
 }
 
@@ -57,23 +60,23 @@ void Numbers::draws()
 {
     for(int t = 0; t < matrix_box; ++t)
         {
-            DrawRectangleRounded(box[t].rect, 0.5, 6, GRAY); 
+            DrawRectangleRounded(box[t][u].rect, 0.5, 6, GRAY); 
             
-            if(CheckCollisionPointRec(GetMousePosition(),box[t].rect)) box[t].mouse_over_box = true;
-            else box[t].mouse_over_box = false;
-            if(box[t].mouse_over_box)
+            if(CheckCollisionPointRec(GetMousePosition(),box[t][u].rect)) box[t][u].mouse_over_box = true;
+            else box[t][u].mouse_over_box = false;
+            if(box[t][u].mouse_over_box)
             {
-                    DrawRectangleRounded(box[t].rect, 0.5, 6, LIGHTGRAY);
+                    DrawRectangleRounded(box[t][u].rect, 0.5, 6, LIGHTGRAY);
                     if(IsMouseButtonDown(MOUSE_BUTTON_LEFT)) 
                     {
-                        box[t].clicked_uppon = 2;
+                        box[t][u].clicked_uppon = 2;
                     }
             }
-            if(!box[t].mouse_over_box && box[t].inputNumber.size() == 0)
+            if(!box[t][u].mouse_over_box && box[t][u].inputNumber.size() == 0)
             {
                 if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) 
                 {
-                        box[t].clicked_uppon = 0;
+                        box[t][u].clicked_uppon = 0;
                 }
             }
         }
@@ -84,10 +87,10 @@ void Numbers::registering_number()
     for(int t = 0; t < matrix_box; ++t)
     {
         
-        if (box[t].clicked_uppon == 2)
+        if (box[t][u].clicked_uppon == 2)
         {
-            DrawRectangleRounded(box[t].rect, 0.5, 6, LIGHTGRAY);
-            DrawRectangleRoundedLines(box[t].rect, 0.5, 6, 4, BLACK);
+            DrawRectangleRounded(box[t][u].rect, 0.5, 6, LIGHTGRAY);
+            DrawRectangleRoundedLines(box[t][u].rect, 0.5, 6, 4, BLACK);
 
             //Get input from keyboard
             int key = GetKeyPressed();
@@ -95,28 +98,28 @@ void Numbers::registering_number()
             // Handle numeric input (0-9)
             if (key >= 48 && key <= 57)  // ASCII codes for '0' to '9'
             {  
-                box[t].inputNumber += (char)key;
+                box[t][u].inputNumber += (char)key;
             }
 
             //Handle Enter key to confirm input and store the number
-            if (key == KEY_ENTER && !box[t].inputNumber.empty()) 
+            if (key == KEY_ENTER && !box[t][u].inputNumber.empty()) 
             {
-                int enteredNumber = std::stoi(box[t].inputNumber);  // Convert input string to integer
-                box[t].numbersArray = enteredNumber;  // Store the number in the array
+                int enteredNumber = std::stoi(box[t][u].inputNumber);  // Convert input string to integer
+                box[t][u].numbersArray = enteredNumber;  // Store the number in the array
                 // box_1.inputNumber = "";  // Clear the input for the next number (redundent)
-                box[t].numberEntered = true;
-                box[t].clicked_uppon = 0;
+                box[t][u].numberEntered = true;
+                box[t][u].clicked_uppon = 0;
             }
                     
             //Handle Backspace to delete the last digit
-            if (key == KEY_BACKSPACE && !box[t].inputNumber.empty()) box[t].inputNumber.pop_back();  // Remove the last character
-            if (key == KEY_BACKSPACE && box[t].inputNumber.empty()) box[t].numbersArray = 0;
+            if (key == KEY_BACKSPACE && !box[t][u].inputNumber.empty()) box[t][u].inputNumber.pop_back();  // Remove the last character
+            if (key == KEY_BACKSPACE && box[t][u].inputNumber.empty()) box[t][u].numbersArray = 0;
 
             //Terminal troubleshooting.
-            printf("%.00lf \n", box[t].numbersArray);
+            printf("%.00lf \n", box[t][u].numbersArray);
         }
             // Display the input number so far
-        if (!box[t].inputNumber.empty()) DrawText((box[t].inputNumber).c_str(), box[t].rect.x + 10, box[t].rect.y + 13, number_size, BLACK);
+        if (!box[t][u].inputNumber.empty()) DrawText((box[t][u].inputNumber).c_str(), box[t][u].rect.x + 10, box[t][u].rect.y + 13, number_size, BLACK);
     }
 }
 
@@ -127,8 +130,8 @@ void Calculations::determinant()
         double up = 1, down = 1;
         for(int t = 0; t <= 4; t++)
         {
-            if(t % 2 == 0 && t != 2) {down *= box[t].numbersArray;}
-            else if (t != 2) {up *= box[t].numbersArray;} 
+            if(t % 2 == 0 && t != 2) {down *= box[t][u].numbersArray;}
+            else if (t != 2) {up *= box[t][u].numbersArray;} 
         }
         result.two_x_two = down - up;
         std::cout << "2 x 2 = " <<result.two_x_two << std::endl; // For debugging.
