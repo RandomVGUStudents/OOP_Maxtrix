@@ -65,6 +65,8 @@ class Numbers
 class Calculations
 {
     public:
+    bool first = false;
+
     void determinant();
     struct determinant_result
     {

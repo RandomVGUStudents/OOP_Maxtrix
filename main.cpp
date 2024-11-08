@@ -12,7 +12,7 @@ int main()
     Grid.designating_box();
     // Initiate Window.
     InitWindow(screenWidth, screenHeight, "Test_1");
-    SetTargetFPS(60);
+    SetTargetFPS(25);
 
     while(!WindowShouldClose())
     {

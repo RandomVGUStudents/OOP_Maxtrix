@@ -11,6 +11,7 @@ input_box default_input_box_size = {70, 50};
 
 Numbers box[9];
 
+Calculations two_x_two_state;
 Calculations::determinant_result result;
 
 Result output_box;
@@ -131,17 +132,29 @@ void Calculations::determinant()
             else if (t != 2) {up *= box[t].numbersArray;} 
         }
         result.two_x_two = down - up;
-        std::cout << result.two_x_two << std::endl; // For debugging.
+        std::cout << "2 x 2 = " <<result.two_x_two << std::endl; // For debugging.
+        two_x_two_state.first = true;
     }
 
-    /*for(int a = 0; a < 5; a++)
-    {
-        if(a != 0 || a != 3)
+    else
+    {    
+        float top = 1, bottom = 1;
+        for(int a = 4; a <= 8; a++)
         {
-            if( a % 2 ==0)
-            result.block
+            if( a % 2 == 0 && a != 6 ) {top *= box[a].numbersArray;}
+            else {bottom *= box[a].numbersArray;}
         }
-    }*/
+        result.three_x_three = (box[0].numbersArray)*(top - bottom);
+        std::cout << " top = " << top << std::endl; // For debugging.
+        std::cout << "bottom = " << bottom << std::endl; // For debugging.
+        std::cout << "box[0] = " << box[0].numbersArray << std::endl; // For debugging.
+        std::cout << "box[4] = " << box[4].numbersArray << std::endl; // For debugging.
+        std::cout << "box[5] = " << box[5].numbersArray << std::endl; // For debugging.
+        std::cout << "box[7] = " << box[7].numbersArray << std::endl; // For debugging.
+        std::cout << "box[8] = " << box[8].numbersArray << std::endl; // For debugging.
+        std::cout << "3 x 3 = " <<result.three_x_three << std::endl; //for debugging.
+        two_x_two_state.first = false;
+    }
 }
 
 void Result::designating_output_box()
@@ -153,6 +166,7 @@ void Result::designating_output_box()
 void Result::draw()
 {
     DrawRectangleRounded(output_box.rect, 0.5, 6, GRAY);
-    DrawText(TextFormat("%.00lf",result.two_x_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
+    if(two_x_two_state.first) {DrawText(TextFormat("%.00lf",result.two_x_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);}
+    DrawText(TextFormat("%.00lf",result.three_x_three), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
 }
 
