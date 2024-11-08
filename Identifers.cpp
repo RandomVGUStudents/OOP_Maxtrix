@@ -145,14 +145,16 @@ void Calculations::determinant()
             else {bottom *= box[a].numbersArray;}
         }
         result.three_x_three = (box[0].numbersArray)*(top - bottom);
-        std::cout << " top = " << top << std::endl; // For debugging.
+        
+        /*std::cout << " top = " << top << std::endl; // For debugging.
         std::cout << "bottom = " << bottom << std::endl; // For debugging.
         std::cout << "box[0] = " << box[0].numbersArray << std::endl; // For debugging.
         std::cout << "box[4] = " << box[4].numbersArray << std::endl; // For debugging.
         std::cout << "box[5] = " << box[5].numbersArray << std::endl; // For debugging.
         std::cout << "box[7] = " << box[7].numbersArray << std::endl; // For debugging.
         std::cout << "box[8] = " << box[8].numbersArray << std::endl; // For debugging.
-        std::cout << "3 x 3 = " <<result.three_x_three << std::endl; //for debugging.
+        std::cout << "3 x 3 = " <<result.three_x_three << std::endl; //for debugging.*/
+
         two_x_two_state.first = false;
     }
 }

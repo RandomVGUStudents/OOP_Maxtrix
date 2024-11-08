@@ -10,6 +10,8 @@
 #define number_size 25 // Number font size.
 #define font_size 20 // Font size.
 #define matrix_box 9 // Numbers of matrix boxes.
+#define matrix_row 3
+#define matrix_columns 3
 
 class State //To define calculator state.
 {
