@@ -3,7 +3,6 @@
 State button; //Mode selection.
 int state;
 
-
 Uis user_interafce;
 Uis matrix_calculator;
 
