@@ -3,11 +3,14 @@
 
 void Determinant::determinant()
 {
-    for(int t = 0; t < matrix_rows; ++t)
+    if(box[0][2].numbersArray == NULL && box[2][0].numbersArray == NULL)
     {
-        for(int u = 0; u < matrix_columns; ++u)
+        for(int t = 0; t < matrix_rows - 1; ++t)
         {
-            std::cout << "box [" << t << "][" << u << "] = " <<box[t][u].numbersArray << std::endl;
-        }   
+            for(int u = 0; u < matrix_columns - 1; ++u)
+            {
+                std::cout << "box [" << t << "][" << u << "] = " <<box[t][u].numbersArray << std::endl;
+            }   
+        }
     }
 }

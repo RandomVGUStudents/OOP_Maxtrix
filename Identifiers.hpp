@@ -17,6 +17,7 @@
 #define matrix_rows 3 // Self explainatory.
 #define matrix_columns 3 // Self explainatory.
 
+
 class Numbers 
 {
     private:
@@ -43,6 +44,18 @@ class Numbers
 
 extern Numbers box[3][3];
 
+class Determinant_Mode
+{
+    private:
+    //Box
+    Vector2 position;
+    Vector2 size;
+    Rectangle rect = {position.x, position.y, size.x, size.y};
+
+    public:
+    bool switch_between_mode = false;
+    void lever_determinant_mode();
+};
 class Result
 {
     private:
@@ -57,16 +70,5 @@ class Result
 
 //Box standard { x, y }
 struct input_box {float x, y;};
-
-/*//float to const char*
-const char* floatToString(float value, int precision) {
-    //Create a buffer large enough to hold the resulting string
-    static char buffer[50];
-    //Format the float into the buffer with the specified precision
-    snprintf(buffer, sizeof(buffer), "%.*f", precision, value);
-    // Return the buffer as const char*
-    return buffer;
-}*/
-
 
 #endif

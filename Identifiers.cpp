@@ -4,6 +4,8 @@ input_box default_input_box_size = {70, 50};
 
 Numbers box[3][3];
 
+Determinant_Mode state_of_mode;
+
 Result output_box;
 
 void Numbers::designating_box()
@@ -24,30 +26,30 @@ void Numbers::designating_box()
 void Numbers::draws()
 {
     for(int t = 0; t < matrix_rows; ++t)
+    {
+    for(int u = 0; u < matrix_columns; ++u)
         {
-        for(int u = 0; u < matrix_columns; ++u)
+            DrawRectangleRounded(box[t][u].rect, 0.5, 6, GRAY); 
+            
+            if(CheckCollisionPointRec(GetMousePosition(),box[t][u].rect)) box[t][u].mouse_over_box = true;
+            else box[t][u].mouse_over_box = false;
+            if(box[t][u].mouse_over_box)
             {
-                DrawRectangleRounded(box[t][u].rect, 0.5, 6, GRAY); 
-                
-                if(CheckCollisionPointRec(GetMousePosition(),box[t][u].rect)) box[t][u].mouse_over_box = true;
-                else box[t][u].mouse_over_box = false;
-                if(box[t][u].mouse_over_box)
+                DrawRectangleRounded(box[t][u].rect, 0.5, 6, LIGHTGRAY);
+                if(IsMouseButtonDown(MOUSE_BUTTON_LEFT)) 
                 {
-                    DrawRectangleRounded(box[t][u].rect, 0.5, 6, LIGHTGRAY);
-                    if(IsMouseButtonDown(MOUSE_BUTTON_LEFT)) 
-                    {
-                        box[t][u].clicked_uppon = 2;
-                    }
+                    box[t][u].clicked_uppon = 2;
                 }
-                if(!box[t][u].mouse_over_box && box[t][u].inputNumber.size() == 0)
+            }
+            if(!box[t][u].mouse_over_box && box[t][u].inputNumber.size() == 0)
+            {
+                if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) 
                 {
-                    if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) 
-                    {
-                            box[t][u].clicked_uppon = 0;
-                    }
+                    box[t][u].clicked_uppon = 0;
                 }
             }
         }
+    }
 }
 
 void Numbers::registering_number()
@@ -91,6 +93,12 @@ void Numbers::registering_number()
             if (!box[t][u].inputNumber.empty()) DrawText((box[t][u].inputNumber).c_str(), box[t][u].rect.x + 10, box[t][u].rect.y + 13, number_size, BLACK);
         }
     }
+}
+
+void Determinant_Mode::lever_determinant_mode()
+{
+    state_of_mode.rect = { screenWidth/2 + 300, screenHeight/2 - 150, 50, 50 };
+    DrawRectangleRounded(state_of_mode.rect, 0.5, 6, GRAY);
 }
 
 void Result::designating_output_box()
