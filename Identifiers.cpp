@@ -1,40 +1,10 @@
 #include "Identifiers.hpp"
 
-State button; //Mode selection.
-int state;
-
-Uis user_interafce;
-Uis matrix_calculator;
-
 input_box default_input_box_size = {70, 50};
 
 Numbers box[3][3];
 
 Result output_box;
-
-
-void State::selection()
-{
-    button.rect = {screenWidth/2 - 100, screenHeight/2 - 75, 200, 150};
-    DrawRectangleRoundedLines(button.rect, 0.5, 6, 4, BLACK);
-    
-    if(CheckCollisionPointRec(GetMousePosition(),button.rect)) button.mouse_over_box = true;
-    if(button.mouse_over_box)
-    {
-        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) state = 1;
-    }
-}
-
-void Uis::uis()
-{
-    user_interafce.rect = {10, 28, 780, 550};
-    DrawRectangleRoundedLines(user_interafce.rect, 0.1, 6, 4, BLACK);
-
-    matrix_calculator.rect = {screenWidth/2.0f - 150, 10, 300, 30};
-    DrawRectangleRounded(matrix_calculator.rect, 0.5f, 6, LIGHTGRAY);
-    DrawRectangleRoundedLines(matrix_calculator.rect, 0.5, 6, 4, BLACK);
-    DrawText("MATRIX CALCULATOR",matrix_calculator.rect.x + 35, matrix_calculator.rect.y + 5, font_size, BLACK);
-}
 
 void Numbers::designating_box()
 {
@@ -135,4 +105,3 @@ void Result::draw()
     //if(two_x_two_state.first) {DrawText(TextFormat("%.00lf",result.two_x_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);}
 
 }
-

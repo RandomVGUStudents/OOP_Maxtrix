@@ -10,42 +10,12 @@
 #include <sstream>
 #include <math.h>
 
-// Custom headers
-#include "Calculations.hpp"
-
 #define screenWidth 800 // ScreenWidth.
 #define screenHeight 600 // ScreenHeight.
 #define number_size 25 // Number font size.
 #define font_size 20 // Font size.
 #define matrix_rows 3 // Self explainatory.
 #define matrix_columns 3 // Self explainatory.
-
-class State //To define calculator state.
-{
-    private:
-    Vector2 position;
-    Vector2 size;
-    Rectangle rect = {position.x, position.y, size.x, size.y};
-    
-    public:
-    int state; //default = 0; determinate = 1;
-    bool button_state;
-    bool mouse_over_box = false;
-    void selection();
-
-};
-
-class Uis
-{
-    private:
-    //box
-    Vector2 position;
-    Vector2 size;
-    Rectangle rect = {position.x, position.y, size.x, size.y};
-    
-    public:
-    void uis();
-};
 
 class Numbers 
 {
@@ -97,5 +67,6 @@ const char* floatToString(float value, int precision) {
     // Return the buffer as const char*
     return buffer;
 }*/
+
 
 #endif
