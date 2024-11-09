@@ -9,7 +9,6 @@ Determinant Solution;
 
 Result Box;
 
-
 int main()
 {
     Grid.designating_box();
