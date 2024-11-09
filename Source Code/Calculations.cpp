@@ -10,5 +10,4 @@ void Determinant::determinant()
             std::cout << "box [" << t << "][" << u << "] = " <<box[t][u].numbersArray << std::endl;
         }   
     }
-
 }
