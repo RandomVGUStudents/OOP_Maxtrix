@@ -4,6 +4,9 @@
 State Mode;
 Uis Main_Menu;
 Numbers Grid;
+
+Determinant Solution;
+
 Result Box;
 
 
@@ -26,6 +29,8 @@ int main()
             Grid.registering_number();
             Box.designating_output_box();
             Box.draw();
+
+            Solution.determinant();
         }
         EndDrawing();
     }

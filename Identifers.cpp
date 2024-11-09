@@ -12,6 +12,7 @@ Numbers box[3][3];
 
 Result output_box;
 
+
 void State::selection()
 {
     button.rect = {screenWidth/2 - 100, screenHeight/2 - 75, 200, 150};

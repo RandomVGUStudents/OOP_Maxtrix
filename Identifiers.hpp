@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef Identifiers.h //header guard to prevent re-initiate of the file multiple times.
-#define Identifiers.h
+#ifndef Identifiers.hpp //header guard to prevent re-initiate of the file multiple times.
+#define Identifiers.hpp
 
 #include <raylib.h>
 #include <string>
@@ -11,7 +11,7 @@
 #include <math.h>
 
 // Custom headers
-#include <Calculations.hpp>
+#include "Calculations.hpp"
 
 #define screenWidth 800 // ScreenWidth.
 #define screenHeight 600 // ScreenHeight.
@@ -70,6 +70,8 @@ class Numbers
     void designating_box(); 
     void draws();
 };
+
+extern Numbers box[3][3];
 
 class Result
 {
