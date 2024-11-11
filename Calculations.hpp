@@ -11,6 +11,8 @@ class Determinant
     public:
     
     void determinant();
+    // Function to transpose the matrix
+    void transpose(double matrix[3][3], double transposed[3][3], int row, int col, int size);
 };
 
 #endif
