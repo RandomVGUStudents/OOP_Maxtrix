@@ -2,40 +2,28 @@
 
 input_box default_input_box_size = {70, 50};
 
-Numbers box[3][3];
-Numbers matrix;
-
-
-Result output_box;
-
 Determinant_Mode state_of_mode_determinant;
-Determinant_Mode state_of_mode_determinant_frame;
 
 void Determinant_Mode::lever_determinant_mode()
 {
     state_of_mode_determinant.rect = { screenWidth/2, screenHeight/2 - 220, 50, 50 }; // Button. 
-    
-    state_of_mode_determinant_frame.rect = { screenWidth/2 - 310, screenHeight/2 - 250, 200, 130};
-
     DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, GRAY);
 
-    if(CheckCollisionPointRec(GetMousePosition(), state_of_mode_determinant.rect)) 
+    if(CheckCollisionPointRec(GetMousePosition(), state_of_mode_determinant.rect)) // Mode lever.
     {
         DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, LIGHTGRAY);
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !state_of_mode_determinant.switch_between_mode)
-        {
-            state_of_mode_determinant.switch_between_mode = true; 
-        }
+        {state_of_mode_determinant.switch_between_mode = true;}
         else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && state_of_mode_determinant.switch_between_mode)
-        {
-            state_of_mode_determinant.switch_between_mode = false;
-        }
+        {state_of_mode_determinant.switch_between_mode = false;}
     }
 }
 
+Numbers box[3][3], matrix;
+
 void Numbers::designating_box()
 {
-    matrix.columns = 3; matrix.columns = 3;
+    matrix.columns = 3; matrix.columns = 3; // Determine the matrix size.
 
     float offset_y = 80, offset_x = 300;
     for(int t = 0; t < matrix.columns; ++t)
@@ -53,15 +41,13 @@ void Numbers::designating_box()
 void Numbers::draws()
 {
     if(!state_of_mode_determinant.switch_between_mode)
-    {
-        matrix.columns = 2; matrix.rows = 2;
-    }
+    {matrix.columns = 2; matrix.rows = 2;}
     else if(state_of_mode_determinant.switch_between_mode == true)
     {matrix.columns = 3; matrix.columns = 3;}
 
     for(int t = 0; t < matrix.columns; ++t)
     {
-    for(int u = 0; u < matrix.columns; ++u)
+        for(int u = 0; u < matrix.columns; ++u)
         {
             DrawRectangleRounded(box[t][u].rect, 0.5, 6, GRAY); 
             
@@ -87,14 +73,7 @@ void Numbers::draws()
 }
 
 void Numbers::registering_number()
-{
-    if(!state_of_mode_determinant.switch_between_mode)
-    {
-        matrix.columns = 2; matrix.rows = 2;
-    }
-    else if(state_of_mode_determinant.switch_between_mode == true)
-    {matrix.columns = 3; matrix.columns = 3;}
-    
+{   
     for(int t = 0; t < matrix.columns; ++t)
     {
         for(int u = 0; u < matrix.columns; ++u)
@@ -136,15 +115,15 @@ void Numbers::registering_number()
     }
 }
 
-void Result::designating_output_box()
+Result output_box;
+Result::determinant_result output_box_value;
+
+
+
+void Result::designating_output_box_and_draw()
 {
     float offset_x = 100, offset_y = 150;
     output_box.rect = {screenWidth/2.0f, screenHeight/2.0f + offset_y, default_input_box_size.x * 4, default_input_box_size.y };
-}
-
-void Result::draw()
-{
     DrawRectangleRounded(output_box.rect, 0.5, 6, GRAY);
-    //if(two_x_two_state.first) {DrawText(TextFormat("%.00lf",result.two_x_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);}
-
+    DrawText(TextFormat("%.00lf",output_box_value.three_three), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
 }

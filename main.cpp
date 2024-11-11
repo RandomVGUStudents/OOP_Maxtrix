@@ -18,7 +18,7 @@ int main()
     Grid.designating_box();
     // Initiate Window.
     InitWindow(screenWidth, screenHeight, "Test_1");
-    SetTargetFPS(25);
+    SetTargetFPS(12);
 
     while(!WindowShouldClose())
     {
@@ -30,10 +30,9 @@ int main()
         {
             Grid.draws();
             Grid.registering_number();
-            Box.designating_output_box();
-            Box.draw();
             Button.lever_determinant_mode();
             Solution.determinant();
+            Box.designating_output_box_and_draw();
         }
         EndDrawing();
     }

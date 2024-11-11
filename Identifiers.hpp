@@ -15,7 +15,8 @@
 #define number_size 25 // Number font size.
 #define font_size 20 // Font size.
 
-
+//Box standard { x, y }
+struct input_box {float x, y;};
 
 class Numbers 
 {
@@ -38,13 +39,11 @@ class Numbers
     bool mouse_over_box = false;    
     int clicked_uppon = 0; // 0 is clear, 1 is hover, 2 is clicked
     void registering_number();
-    
     void designating_box(); 
     void draws();
 };
 
-extern Numbers matrix;
-extern Numbers box[3][3];
+extern Numbers matrix, box[3][3];
 
 class Determinant_Mode
 {
@@ -69,11 +68,13 @@ class Result
     Rectangle rect = {position.x, position.y, size.x, size.y};
 
     public:
-    void designating_output_box(); // Defining output box and drawing it.
-    void draw();
+    void designating_output_box_and_draw(); // Defining output box and drawing it.
+    struct determinant_result
+    {
+        double two_two, three_three;
+    };
 };
 
-//Box standard { x, y }
-struct input_box {float x, y;};
+extern Result::determinant_result output_box_value;
 
 #endif

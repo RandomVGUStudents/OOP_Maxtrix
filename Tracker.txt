@@ -18,6 +18,10 @@ Main.cpp
 
         class Numbers
         class Result
+
+        extern Determinant_Mode state_of_mode_determinant;
+        extern Numbers matrix, box[3][3];
+        
         
     - UserInterface.hpp/.cpp <#include Identifiers.hpp>
         #define
