@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef Calculations.hpp //header guard to prevent re-initiate of the file multiple times.
-#define Calculations.hpp
+#ifndef Calculations_hpp //header guard to prevent re-initiate of the file multiple times.
+#define Calculations_hpp
 
 // Custom headers
 #include "Identifiers.hpp"

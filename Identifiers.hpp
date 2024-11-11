@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef Identifiers.hpp //header guard to prevent re-initiate of the file multiple times.
-#define Identifiers.hpp
+#ifndef Identifiers_hpp //header guard to prevent re-initiate of the file multiple times.
+#define Identifiers_hpp
 
 #include <raylib.h>
 #include <string>

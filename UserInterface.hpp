@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef UserInterface.hpp
-#define UserInterface.hpp
+#ifndef UserInterface_hpp
+#define UserInterface_hpp
 
 #include "Identifiers.hpp"
 
@@ -31,7 +31,5 @@ class Uis
     public:
     void uis();
 };
-
-
 
 #endif
