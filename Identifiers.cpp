@@ -4,8 +4,6 @@ input_box default_input_box_size = {70, 50};
 
 Numbers box[3][3];
 
-Determinant_Mode state_of_mode;
-
 Result output_box;
 
 void Numbers::designating_box()
@@ -54,6 +52,7 @@ void Numbers::draws()
 
 void Numbers::registering_number()
 {
+    
     for(int t = 0; t < matrix_rows; ++t)
     {
         for(int u = 0; u < matrix_columns; ++u)
@@ -95,10 +94,34 @@ void Numbers::registering_number()
     }
 }
 
+Determinant_Mode state_of_mode_determinant;
+Determinant_Mode state_of_mode_determinant_frame;
+
 void Determinant_Mode::lever_determinant_mode()
 {
-    state_of_mode.rect = { screenWidth/2 + 300, screenHeight/2 - 150, 50, 50 };
-    DrawRectangleRounded(state_of_mode.rect, 0.5, 6, GRAY);
+    state_of_mode_determinant.rect = { screenWidth/2 + 300, screenHeight/2 - 150, 50, 50 }; // Button. 
+    
+    state_of_mode_determinant_frame.rect = { screenWidth/2 - 310, screenHeight/2 - 250, 200, 130};
+
+    DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, GRAY);
+
+    if(CheckCollisionPointRec(GetMousePosition(), state_of_mode_determinant.rect)) 
+    {
+        DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, LIGHTGRAY);
+        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !state_of_mode_determinant.switch_between_mode)
+        {
+            state_of_mode_determinant.switch_between_mode = true; 
+        }
+        else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && state_of_mode_determinant.switch_between_mode)
+        {
+            state_of_mode_determinant.switch_between_mode = false;
+        }
+    }
+
+    if(!state_of_mode_determinant.switch_between_mode)
+    {
+        DrawRectangleRoundedLines(state_of_mode_determinant_frame.rect, 0.5, 6, 3, RED);
+    }
 }
 
 void Result::designating_output_box()

@@ -56,6 +56,9 @@ class Determinant_Mode
     bool switch_between_mode = false;
     void lever_determinant_mode();
 };
+
+extern Determinant_Mode state_of_mode_determinant;
+
 class Result
 {
     private:
