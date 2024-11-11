@@ -14,8 +14,7 @@
 #define screenHeight 600 // ScreenHeight.
 #define number_size 25 // Number font size.
 #define font_size 20 // Font size.
-#define matrix_rows 3 // Self explainatory.
-#define matrix_columns 3 // Self explainatory.
+
 
 
 class Numbers 
@@ -27,6 +26,8 @@ class Numbers
     Rectangle rect = {position.x, position.y, size.x, size.y};
 
     public:
+    int rows, columns; // Self explainatory.
+
     //Varible to store inputs
     std::string inputNumber = "";
     double numbersArray;
@@ -42,6 +43,7 @@ class Numbers
     void draws();
 };
 
+extern Numbers matrix;
 extern Numbers box[3][3];
 
 class Determinant_Mode

@@ -3,29 +3,70 @@
 input_box default_input_box_size = {70, 50};
 
 Numbers box[3][3];
+Numbers matrix;
+
 
 Result output_box;
 
+Determinant_Mode state_of_mode_determinant;
+Determinant_Mode state_of_mode_determinant_frame;
+
+void Determinant_Mode::lever_determinant_mode()
+{
+    state_of_mode_determinant.rect = { screenWidth/2 + 300, screenHeight/2 - 150, 50, 50 }; // Button. 
+    
+    state_of_mode_determinant_frame.rect = { screenWidth/2 - 310, screenHeight/2 - 250, 200, 130};
+
+    DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, GRAY);
+
+    if(CheckCollisionPointRec(GetMousePosition(), state_of_mode_determinant.rect)) 
+    {
+        DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, LIGHTGRAY);
+        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !state_of_mode_determinant.switch_between_mode)
+        {
+            state_of_mode_determinant.switch_between_mode = true; 
+        }
+        else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && state_of_mode_determinant.switch_between_mode)
+        {
+            state_of_mode_determinant.switch_between_mode = false;
+        }
+    }
+
+    if(!state_of_mode_determinant.switch_between_mode)
+    {
+        DrawRectangleRoundedLines(state_of_mode_determinant_frame.rect, 0.5, 6, 3, RED);
+    }
+}
+
 void Numbers::designating_box()
 {
+    matrix.columns = 3; matrix.columns = 3;
+
     float offset_y = 60, offset_x = 300;
-    for(int t = 0; t < matrix_rows; ++t)
+    for(int t = 0; t < matrix.columns; ++t)
     { 
         float offset_y_value = 1;
-        for(int u = 0; u < matrix_columns; ++u)
+        for(int u = 0; u < matrix.columns; ++u)
         {
             box[t][u].rect = {screenWidth/2.0f - offset_x, offset_y * offset_y_value, default_input_box_size.x, default_input_box_size.y};
             offset_y_value++;
         }
         offset_x -= 90;
-    }
+    }   
 }
 
 void Numbers::draws()
 {
-    for(int t = 0; t < matrix_rows; ++t)
+    if(!state_of_mode_determinant.switch_between_mode)
     {
-    for(int u = 0; u < matrix_columns; ++u)
+        matrix.columns = 2; matrix.rows = 2;
+    }
+    else if(state_of_mode_determinant.switch_between_mode == true)
+    {matrix.columns = 3; matrix.columns = 3;}
+
+    for(int t = 0; t < matrix.columns; ++t)
+    {
+    for(int u = 0; u < matrix.columns; ++u)
         {
             DrawRectangleRounded(box[t][u].rect, 0.5, 6, GRAY); 
             
@@ -52,10 +93,16 @@ void Numbers::draws()
 
 void Numbers::registering_number()
 {
-    
-    for(int t = 0; t < matrix_rows; ++t)
+    if(!state_of_mode_determinant.switch_between_mode)
     {
-        for(int u = 0; u < matrix_columns; ++u)
+        matrix.columns = 2; matrix.rows = 2;
+    }
+    else if(state_of_mode_determinant.switch_between_mode == true)
+    {matrix.columns = 3; matrix.columns = 3;}
+    
+    for(int t = 0; t < matrix.columns; ++t)
+    {
+        for(int u = 0; u < matrix.columns; ++u)
         {
             if (box[t][u].clicked_uppon == 2)
             {
@@ -91,36 +138,6 @@ void Numbers::registering_number()
                 // Display the input number so far
             if (!box[t][u].inputNumber.empty()) DrawText((box[t][u].inputNumber).c_str(), box[t][u].rect.x + 10, box[t][u].rect.y + 13, number_size, BLACK);
         }
-    }
-}
-
-Determinant_Mode state_of_mode_determinant;
-Determinant_Mode state_of_mode_determinant_frame;
-
-void Determinant_Mode::lever_determinant_mode()
-{
-    state_of_mode_determinant.rect = { screenWidth/2 + 300, screenHeight/2 - 150, 50, 50 }; // Button. 
-    
-    state_of_mode_determinant_frame.rect = { screenWidth/2 - 310, screenHeight/2 - 250, 200, 130};
-
-    DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, GRAY);
-
-    if(CheckCollisionPointRec(GetMousePosition(), state_of_mode_determinant.rect)) 
-    {
-        DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, LIGHTGRAY);
-        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !state_of_mode_determinant.switch_between_mode)
-        {
-            state_of_mode_determinant.switch_between_mode = true; 
-        }
-        else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && state_of_mode_determinant.switch_between_mode)
-        {
-            state_of_mode_determinant.switch_between_mode = false;
-        }
-    }
-
-    if(!state_of_mode_determinant.switch_between_mode)
-    {
-        DrawRectangleRoundedLines(state_of_mode_determinant_frame.rect, 0.5, 6, 3, RED);
     }
 }
 
