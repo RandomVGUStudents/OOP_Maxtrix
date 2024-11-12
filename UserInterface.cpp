@@ -28,4 +28,5 @@ void State::selection()
         DrawRectangleRounded(button.rect, 0.5, 6, LIGHTGRAY);
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) state = 1;
     }
+    else button.mouse_over_box = false;
 }
