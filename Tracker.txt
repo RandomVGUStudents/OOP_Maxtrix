@@ -7,7 +7,7 @@ Instruction for push.
 
     git add .
     git commit -m "insert_message"
-    git push origin Matrix-1D-to-2D
+    git push origin main
 
 Main.cpp
     - Identifiers.hpp/.cpp
@@ -26,13 +26,16 @@ Main.cpp
     - UserInterface.hpp/.cpp <#include Identifiers.hpp>
         #define
 
-        class State
         class Uis
 
     - Calculations.hpp/.cpp <#include Identifiers.hpp>
         #define
 
         class Determinant
+
+    - ModeSelection.hpp/.cpp <#include Identifiers.pp>
+
+        class State
 
 
 Checklist: ( < x > done; < o > undone )
