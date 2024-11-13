@@ -126,4 +126,5 @@ void Result::designating_output_box_and_draw()
     output_box.rect = {screenWidth/2.0f, screenHeight/2.0f + offset_y, default_input_box_size.x * 4, default_input_box_size.y };
     DrawRectangleRounded(output_box.rect, 0.5, 6, GRAY);
     DrawText(TextFormat("%.00lf",output_box_value.three_three), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
+    DrawText(TextFormat("%.00lf", output_box_value.two_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
 }
