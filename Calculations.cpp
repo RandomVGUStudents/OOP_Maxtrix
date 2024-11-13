@@ -13,7 +13,25 @@ void Determinant::determinant()
 
     if(state_of_mode_determinant.switch_between_mode == false)
     {
-        std::cout << "Place Holder" << std::endl;
+         // Assuming matrix is 2x2 when switch_between_mode is false
+         double result = 0;
+         double temp[2][2];
+
+        // Fill temp with values from box for a 2x2 matrix calculation 
+         for (int i = 0; i < 2; ++i)
+         {
+             for (int j = 0; j < 2; ++j)
+                 {
+                     temp[i][j] = box[i][j].numbersArray;
+                 }
+        }
+
+         // Calculate determinant: ad - bc
+         result = (temp[0][0] * temp[1][1]) - (temp[0][1] * temp[1][0]);
+
+         // Store in output box and print for verification
+         output_box_value.two_two = result;
+         std::cout << "2x2 Determinant = " << output_box_value.two_two << std::endl;
     }
     else if(state_of_mode_determinant.switch_between_mode == true)
     {
