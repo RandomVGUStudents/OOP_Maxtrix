@@ -1,3 +1,9 @@
+#pragma once
+#ifndef ModeSelection_hpp
+#define ModeSelection_hpp
+
+
+
 #include "Identifiers.hpp"
 
 class State //To define calculator state.
@@ -14,3 +20,5 @@ class State //To define calculator state.
     void selection();
 
 };
+
+#endif
