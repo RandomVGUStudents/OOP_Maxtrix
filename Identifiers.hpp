@@ -18,7 +18,9 @@
 //Box standard { x, y }
 struct input_box {float x, y;};
 
-class Numbers 
+extern struct input_box default_input_box_size;
+
+class ArrayDeclaration 
 {
     private:
     //Box
@@ -43,7 +45,7 @@ class Numbers
     void draws();
 };
 
-extern Numbers matrix, box[3][3];
+extern ArrayDeclaration matrix, box[3][3];
 
 class Determinant_Mode
 {
@@ -60,21 +62,6 @@ class Determinant_Mode
 
 extern Determinant_Mode state_of_mode_determinant;
 
-class Result
-{
-    private:
-    Vector2 size;
-    Vector2 position;
-    Rectangle rect = {position.x, position.y, size.x, size.y};
 
-    public:
-    void designating_output_box_and_draw(); // Defining output box and drawing it.
-    struct determinant_result
-    {
-        double two_two, three_three;
-    };
-};
-
-extern Result::determinant_result output_box_value;
 
 #endif

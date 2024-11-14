@@ -83,3 +83,23 @@ void Determinant::determinant()
     }
     std::cout << "OUTPUT_BOX_VALUE = " << output_box_value.three_three << std::endl << std::endl; // For troubleshooting.
 }
+
+Result output_box;
+Result::determinant_result output_box_value;
+
+
+
+void Result::designating_output_box_and_draw()
+{
+    float offset_x = 100, offset_y = 150;
+    output_box.rect = {screenWidth/2.0f, screenHeight/2.0f + offset_y, default_input_box_size.x * 4, default_input_box_size.y };
+    DrawRectangleRounded(output_box.rect, 0.5, 6, LIGHTGRAY);
+    if(state_of_mode_determinant.switch_between_mode == false)
+    {
+    DrawText(TextFormat("%.00lf",output_box_value.two_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
+    }
+    else if(state_of_mode_determinant.switch_between_mode == true )
+    {
+    DrawText(TextFormat("%.00lf", output_box_value.three_three), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
+    }
+}

@@ -6,7 +6,7 @@
 State Mode;
 Uis Main_Menu;
 
-Numbers Grid;
+ArrayDeclaration Grid;
 
 Determinant_Mode Button;
 

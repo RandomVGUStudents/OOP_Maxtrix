@@ -19,9 +19,9 @@ void Determinant_Mode::lever_determinant_mode()
     }
 }
 
-Numbers box[3][3], matrix;
+ArrayDeclaration box[3][3], matrix;
 
-void Numbers::designating_box()
+void ArrayDeclaration::designating_box()
 {
     matrix.columns = 4; matrix.columns = 4; // Determine the matrix size.
 
@@ -38,7 +38,7 @@ void Numbers::designating_box()
     }   
 }
 
-void Numbers::draws()
+void ArrayDeclaration::draws()
 {
     if(!state_of_mode_determinant.switch_between_mode)
     {matrix.columns = 2; matrix.rows = 2;}
@@ -72,7 +72,7 @@ void Numbers::draws()
     }
 }
 
-void Numbers::registering_number()
+void ArrayDeclaration::registering_number()
 {   
     for(int t = 0; t < matrix.columns; ++t)
     {
@@ -112,25 +112,5 @@ void Numbers::registering_number()
                 // Display the input number so far
             if (!box[t][u].inputNumber.empty()) DrawText((box[t][u].inputNumber).c_str(), box[t][u].rect.x + 10, box[t][u].rect.y + 13, number_size, BLACK);
         }
-    }
-}
-
-Result output_box;
-Result::determinant_result output_box_value;
-
-
-
-void Result::designating_output_box_and_draw()
-{
-    float offset_x = 100, offset_y = 150;
-    output_box.rect = {screenWidth/2.0f, screenHeight/2.0f + offset_y, default_input_box_size.x * 4, default_input_box_size.y };
-    DrawRectangleRounded(output_box.rect, 0.5, 6, LIGHTGRAY);
-    if(state_of_mode_determinant.switch_between_mode == false)
-    {
-    DrawText(TextFormat("%.00lf",output_box_value.two_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
-    }
-    else if(state_of_mode_determinant.switch_between_mode == true )
-    {
-    DrawText(TextFormat("%.00lf", output_box_value.three_three), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
     }
 }
