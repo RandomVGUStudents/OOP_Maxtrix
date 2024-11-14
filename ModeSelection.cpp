@@ -10,7 +10,7 @@ void State::selection()
     if(CheckCollisionPointRec(GetMousePosition(),button.rect)) button.mouse_over_box = true;
     if(button.mouse_over_box)
     {   
-        DrawRectangleRounded(button.rect, 0.5, 6, LIGHTGRAY);
+        DrawRectangleRounded(button.rect, 0.5, 6, BEIGE);
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) state = 1;
     }
     else button.mouse_over_box = false;

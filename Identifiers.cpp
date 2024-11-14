@@ -7,11 +7,11 @@ Determinant_Mode state_of_mode_determinant;
 void Determinant_Mode::lever_determinant_mode()
 {
     state_of_mode_determinant.rect = { screenWidth/2, screenHeight/2 - 220, 50, 50 }; // Button. 
-    DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, GRAY);
+    DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, LIGHTGRAY);
 
     if(CheckCollisionPointRec(GetMousePosition(), state_of_mode_determinant.rect)) // Mode lever.
     {
-        DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, LIGHTGRAY);
+        DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, BEIGE);
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !state_of_mode_determinant.switch_between_mode)
         {state_of_mode_determinant.switch_between_mode = true;}
         else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && state_of_mode_determinant.switch_between_mode)
@@ -23,7 +23,7 @@ Numbers box[3][3], matrix;
 
 void Numbers::designating_box()
 {
-    matrix.columns = 3; matrix.columns = 3; // Determine the matrix size.
+    matrix.columns = 4; matrix.columns = 4; // Determine the matrix size.
 
     float offset_y = 80, offset_x = 300;
     for(int t = 0; t < matrix.columns; ++t)
@@ -49,13 +49,13 @@ void Numbers::draws()
     {
         for(int u = 0; u < matrix.columns; ++u)
         {
-            DrawRectangleRounded(box[t][u].rect, 0.5, 6, GRAY); 
+            DrawRectangleRounded(box[t][u].rect, 0.5, 6, LIGHTGRAY); 
             
             if(CheckCollisionPointRec(GetMousePosition(),box[t][u].rect)) box[t][u].mouse_over_box = true;
             else box[t][u].mouse_over_box = false;
             if(box[t][u].mouse_over_box)
             {
-                DrawRectangleRounded(box[t][u].rect, 0.5, 6, LIGHTGRAY);
+                DrawRectangleRounded(box[t][u].rect, 0.5, 6, BEIGE);
                 if(IsMouseButtonDown(MOUSE_BUTTON_LEFT)) 
                 {
                     box[t][u].clicked_uppon = 2;
@@ -80,7 +80,7 @@ void Numbers::registering_number()
         {
             if (box[t][u].clicked_uppon == 2)
             {
-                DrawRectangleRounded(box[t][u].rect, 0.5, 6, LIGHTGRAY);
+                DrawRectangleRounded(box[t][u].rect, 0.5, 6, BEIGE);
                 DrawRectangleRoundedLines(box[t][u].rect, 0.5, 6, 4, BLACK);
 
                 //Get input from keyboard
@@ -124,7 +124,13 @@ void Result::designating_output_box_and_draw()
 {
     float offset_x = 100, offset_y = 150;
     output_box.rect = {screenWidth/2.0f, screenHeight/2.0f + offset_y, default_input_box_size.x * 4, default_input_box_size.y };
-    DrawRectangleRounded(output_box.rect, 0.5, 6, GRAY);
-    DrawText(TextFormat("%.00lf",output_box_value.three_three), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
-    DrawText(TextFormat("%.00lf", output_box_value.two_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
+    DrawRectangleRounded(output_box.rect, 0.5, 6, LIGHTGRAY);
+    if(state_of_mode_determinant.switch_between_mode == false)
+    {
+    DrawText(TextFormat("%.00lf",output_box_value.two_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
+    }
+    else if(state_of_mode_determinant.switch_between_mode == true )
+    {
+    DrawText(TextFormat("%.00lf", output_box_value.three_three), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
+    }
 }
