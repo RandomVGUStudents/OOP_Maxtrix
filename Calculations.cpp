@@ -87,8 +87,6 @@ void Determinant::determinant()
 Result output_box;
 Result::determinant_result output_box_value;
 
-
-
 void Result::designating_output_box_and_draw()
 {
     float offset_x = 100, offset_y = 150;

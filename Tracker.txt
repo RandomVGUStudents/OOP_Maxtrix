@@ -10,11 +10,14 @@ Instruction for push.
     git push origin main
 
 Main.cpp
-    - Identifiers.hpp/.cpp
+    - main.hpp
         #define
             screenHeight, screenWidth
             number_size, font_size
             matrix_columns, matrix_rows
+
+    - Identifiers.hpp/.cpp
+        #define
 
         class Numbers
         class Result
