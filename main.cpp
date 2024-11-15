@@ -3,6 +3,7 @@
 #include "UserInterface.hpp"
 #include "ModeSelection.hpp"
 
+
 State Mode;
 Uis Main_Menu;
 
@@ -14,11 +15,14 @@ Determinant Solution;
 
 Result Box;
 
+Texture2D Toggle_Button;
+
 int main()
 {
     Grid.designating_box();
     // Initiate Window.
-    InitWindow(screenWidth, screenHeight, "Test_1");
+    InitWindow(screenWidth, screenHeight, "Matrix Calculator");
+    Toggle_Button = LoadTexture("Assets/Toggle_Button.png");
     SetTargetFPS(12);
 
     while(!WindowShouldClose())

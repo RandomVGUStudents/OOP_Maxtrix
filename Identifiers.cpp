@@ -2,7 +2,7 @@
 
 input_box default_input_box_size = {70, 50};
 
-Texture2D Toggle_Button = LoadTexture("Assets/Toggle_Button.png");
+extern Texture2D Toggle_Button;
 Determinant_Mode state_of_mode_determinant;
 
 void Determinant_Mode::lever_determinant_mode()
