@@ -2,12 +2,14 @@
 
 input_box default_input_box_size = {70, 50};
 
+Texture2D Toggle_Button = LoadTexture("Assets/Toggle_Button.png");
 Determinant_Mode state_of_mode_determinant;
 
 void Determinant_Mode::lever_determinant_mode()
 {
     state_of_mode_determinant.rect = { screenWidth/2, screenHeight/2 - 220, 50, 50 }; // Button. 
     DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, LIGHTGRAY);
+    DrawTexture(Toggle_Button, state_of_mode_determinant.rect.x, state_of_mode_determinant.rect.y, WHITE);
 
     if(CheckCollisionPointRec(GetMousePosition(), state_of_mode_determinant.rect)) // Mode lever.
     {

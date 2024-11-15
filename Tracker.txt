@@ -9,6 +9,8 @@ Instruction for push.
     git commit -m "insert_message"
     git push origin main
 
+
+<SYSTEM OF SPAGHETY CODE>
 Main.cpp
     - main.hpp
         #define
@@ -43,11 +45,9 @@ Main.cpp
 
 Checklist: ( < x > done; < o > undone )
 < o > Make a main header where Identifiers.hpp; UserInterface.hpp; Calculations.hpp source from for standart like screenHeight, screenWidth, number_size, font_size, 
-< o > Finish making logic for 2x2 and 3x3 determinant.
-
-If your team wants to work on this topic, please consider the requirements:
- - Your UI should generate visual arrays of empty slots corresponding to the size of an inputted matrix. 
-- The calculated matrix also needs to be visualized in arrays of slots, each of which represents one matrix entry.
-- Can perform complicated calculations by facilitating parentheses for term grouping, e.g. (A + B)*C + (D - E)*F.
-- Can find the inverse of an invertible matrix
-- Can solve a linear system.
+< x > Finish making logic for 2x2 and 3x3 determinant.
+< x > Your UI should generate visual arrays of empty slots corresponding to the size of an inputted matrix. 
+< o > The calculated matrix also needs to be visualized in arrays of slots, each of which represents one matrix entry.
+< x > Can perform complicated calculations by facilitating parentheses for term grouping, e.g. (A + B)*C + (D - E)*F.
+< o > (Priority) Can find the inverse of an invertible matrix
+< o > Can solve a linear system.
