@@ -3,12 +3,14 @@
 #ifndef Identifiers_hpp //header guard to prevent re-initiate of the file multiple times.
 #define Identifiers_hpp
 
-#include "main.hpp"
+#include "Primary.hpp"
 
 //Box standard { x, y }
 struct input_box {float x, y;};
 
 extern struct input_box default_input_box_size;
+
+extern Texture2D Toggle_Button;
 
 class ArrayDeclaration 
 {
@@ -51,7 +53,5 @@ class Determinant_Mode
 };
 
 extern Determinant_Mode state_of_mode_determinant;
-
-
 
 #endif

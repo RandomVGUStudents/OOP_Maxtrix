@@ -1,8 +1,4 @@
-#include "Identifiers.hpp"
-#include "Calculations.hpp"
-#include "UserInterface.hpp"
-#include "ModeSelection.hpp"
-
+#include "Primary.hpp"
 
 State Mode;
 Uis Main_Menu;

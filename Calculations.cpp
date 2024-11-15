@@ -1,5 +1,4 @@
-#include "Calculations.hpp"
-#include "Identifiers.hpp"
+#include "Primary.hpp"
 
 Determinant tempor_value[3];
 

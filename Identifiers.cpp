@@ -1,8 +1,7 @@
-#include "Identifiers.hpp"
+#include "Primary.hpp"
 
 input_box default_input_box_size = {70, 50};
 
-extern Texture2D Toggle_Button;
 Determinant_Mode state_of_mode_determinant;
 
 void Determinant_Mode::lever_determinant_mode()
@@ -13,7 +12,7 @@ void Determinant_Mode::lever_determinant_mode()
 
     if(CheckCollisionPointRec(GetMousePosition(), state_of_mode_determinant.rect)) // Mode lever.
     {
-        DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, BEIGE);
+        DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, TRANSPARENT_BEIGE);
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !state_of_mode_determinant.switch_between_mode)
         {state_of_mode_determinant.switch_between_mode = true;}
         else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && state_of_mode_determinant.switch_between_mode)
