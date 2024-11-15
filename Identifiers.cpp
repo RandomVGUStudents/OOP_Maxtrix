@@ -1,4 +1,4 @@
-#include "Primary.hpp"
+#include "include/Primary.hpp"
 
 input_box default_input_box_size = {70, 50};
 

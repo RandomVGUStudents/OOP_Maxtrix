@@ -1,4 +1,4 @@
-#include "Primary.hpp"
+#include "include/Primary.hpp"
 
 State button; //Mode selection.
 

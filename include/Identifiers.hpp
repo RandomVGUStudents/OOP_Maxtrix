@@ -3,7 +3,7 @@
 #ifndef Identifiers_hpp //header guard to prevent re-initiate of the file multiple times.
 #define Identifiers_hpp
 
-#include "Primary.hpp"
+#include "include/Primary.hpp"
 
 //Box standard { x, y }
 struct input_box {float x, y;};
