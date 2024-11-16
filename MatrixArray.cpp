@@ -18,12 +18,12 @@ void MatrixSize::mode()
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !is_three_by_three.state)
         {
             is_three_by_three.state = true;
-            matrix.columns = 2; matrix.rows = 2;
+            matrix.columns = 3; matrix.rows = 3;
         }
         else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && is_three_by_three.state)
         {
             is_three_by_three.state = false;
-            matrix.columns = 3; matrix.rows = 3;
+            matrix.columns = 2; matrix.rows = 2;
         }
     }
 }
