@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef Identifiers_hpp //header guard to prevent re-initiate of the file multiple times.
-#define Identifiers_hpp
+#ifndef MatrixArray_hpp //header guard to prevent re-initiate of the file multiple times.
+#define MatrixArray_hpp
 
 #include "include/Primary.hpp"
 
@@ -39,7 +39,7 @@ class ArrayDeclaration
 
 extern ArrayDeclaration matrix, box[3][3];
 
-class Determinant_Mode
+class MatrixSize
 {
     private:
     //Box
@@ -48,10 +48,10 @@ class Determinant_Mode
     Rectangle rect = {position.x, position.y, size.x, size.y};
 
     public:
-    bool switch_between_mode = false;
-    void lever_determinant_mode();
+    bool state = false;
+    void mode();
 };
 
-extern Determinant_Mode state_of_mode_determinant;
+extern MatrixSize is_three_by_three;
 
 #endif

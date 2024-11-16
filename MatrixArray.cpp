@@ -2,21 +2,21 @@
 
 input_box default_input_box_size = {70, 50};
 
-Determinant_Mode state_of_mode_determinant;
+MatrixSize is_three_by_three;
 
-void Determinant_Mode::lever_determinant_mode()
+void MatrixSize::mode()
 {
-    state_of_mode_determinant.rect = { screenWidth/2, screenHeight/2 - 220, 50, 50 }; // Button. 
-    DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, LIGHTGRAY);
-    DrawTexture(Toggle_Button, state_of_mode_determinant.rect.x, state_of_mode_determinant.rect.y, WHITE);
+    is_three_by_three.rect = { screenWidth/2, screenHeight/2 - 220, 50, 50 }; // Button. 
+    DrawRectangleRounded(is_three_by_three.rect, 0.5, 6, LIGHTGRAY);
+    DrawTexture(Toggle_Button, is_three_by_three.rect.x, is_three_by_three.rect.y, WHITE);
 
-    if(CheckCollisionPointRec(GetMousePosition(), state_of_mode_determinant.rect)) // Mode lever.
+    if(CheckCollisionPointRec(GetMousePosition(), is_three_by_three.rect)) // Mode lever.
     {
-        DrawRectangleRounded(state_of_mode_determinant.rect, 0.5, 6, TRANSPARENT_BEIGE);
-        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !state_of_mode_determinant.switch_between_mode)
-        {state_of_mode_determinant.switch_between_mode = true;}
-        else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && state_of_mode_determinant.switch_between_mode)
-        {state_of_mode_determinant.switch_between_mode = false;}
+        DrawRectangleRounded(is_three_by_three.rect, 0.5, 6, TRANSPARENT_BEIGE);
+        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !is_three_by_three.state)
+        {is_three_by_three.state = true;}
+        else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && is_three_by_three.state)
+        {is_three_by_three.state = false;}
     }
 }
 
@@ -41,9 +41,9 @@ void ArrayDeclaration::designating_box()
 
 void ArrayDeclaration::draws()
 {
-    if(!state_of_mode_determinant.switch_between_mode)
+    if(!is_three_by_three.state)
     {matrix.columns = 2; matrix.rows = 2;}
-    else if(state_of_mode_determinant.switch_between_mode == true)
+    else if(is_three_by_three.state == true)
     {matrix.columns = 3; matrix.columns = 3;}
 
     for(int t = 0; t < matrix.columns; ++t)

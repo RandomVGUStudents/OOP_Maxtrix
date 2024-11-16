@@ -5,7 +5,7 @@ Uis Main_Menu;
 
 ArrayDeclaration Grid;
 
-Determinant_Mode Button;
+MatrixSize Button;
 
 Determinant Solution;
 
@@ -18,7 +18,7 @@ int main()
     Grid.designating_box();
     // Initiate Window.
     InitWindow(screenWidth, screenHeight, "Matrix Calculator");
-    Toggle_Button = LoadTexture("Assets/Toggle_Button.png");
+    Toggle_Button = LoadTexture("assets/Toggle_Button.png");
     SetTargetFPS(12);
 
     while(!WindowShouldClose())
@@ -26,14 +26,20 @@ int main()
         BeginDrawing();
         ClearBackground(RAYWHITE);
         Main_Menu.uis();
-        if(Mode.state == 0) Mode.selection();
-        else if(Mode.state == 1)
+        
+        switch (Mode.state)
         {
+        case 1:
             Grid.draws();
             Grid.registering_number();
-            Button.lever_determinant_mode();
+            Button.mode();
             Solution.determinant();
             Box.designating_output_box_and_draw();
+            break;
+        
+        default:
+            Mode.selection();
+            break;
         }
         EndDrawing();
     }

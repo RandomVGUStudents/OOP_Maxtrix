@@ -1,10 +1,10 @@
 #pragma once
 
-#ifndef Calculations_hpp //header guard to prevent re-initiate of the file multiple times.
-#define Calculations_hpp
+#ifndef Determinants_hpp //header guard to prevent re-initiate of the file multiple times.
+#define Determinants_hpp
 
 // Custom headers
-#include "Identifiers.hpp"
+#include "MatrixArray.hpp"
 class Determinant
 {
     private:

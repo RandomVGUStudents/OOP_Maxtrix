@@ -10,9 +10,9 @@ void Determinant::determinant()
         tempor_value[a].bottom = 1;
     } // Adding a value to tempor_value so that it can be multiply with the matrix.
 
-    if(state_of_mode_determinant.switch_between_mode == false)
+    if(is_three_by_three.state == false)
     {
-         // Assuming matrix is 2x2 when switch_between_mode is false
+         // Assuming matrix is 2x2 when state is false
          double result = 0;
          double temp[2][2];
 
@@ -32,7 +32,7 @@ void Determinant::determinant()
          output_box_value.two_two = result;
          std::cout << "2x2 Determinant = " << output_box_value.two_two << std::endl;
     }
-    else if(state_of_mode_determinant.switch_between_mode == true)
+    else if(is_three_by_three.state == true)
     {
         int clk;
         for(int a = 0; a < matrix.columns; ++a)
@@ -91,11 +91,11 @@ void Result::designating_output_box_and_draw()
     float offset_x = 100, offset_y = 150;
     output_box.rect = {screenWidth/2.0f, screenHeight/2.0f + offset_y, default_input_box_size.x * 4, default_input_box_size.y };
     DrawRectangleRounded(output_box.rect, 0.5, 6, LIGHTGRAY);
-    if(state_of_mode_determinant.switch_between_mode == false)
+    if(is_three_by_three.state == false)
     {
     DrawText(TextFormat("%.00lf",output_box_value.two_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
     }
-    else if(state_of_mode_determinant.switch_between_mode == true )
+    else if(is_three_by_three.state == true )
     {
     DrawText(TextFormat("%.00lf", output_box_value.three_three), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);
     }

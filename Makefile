@@ -196,7 +196,7 @@ endif
 #  -D_DEFAULT_SOURCE    use with -std=c99 on Linux and PLATFORM_WEB, required for timespec
 CFLAGS += -Wall -std=c++14 -D_DEFAULT_SOURCE -Wno-missing-braces
 
-CFLAGS += -I./HeaderFolder
+CFLAGS += -I./include
 
 ifeq ($(BUILD_MODE),DEBUG)
     CFLAGS += -g -O0

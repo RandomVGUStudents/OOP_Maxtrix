@@ -24,7 +24,7 @@ Main.cpp
         class Numbers
         class Result
 
-        extern Determinant_Mode state_of_mode_determinant;
+        extern MatrixSize is_three_by_three;
         extern Numbers matrix, box[3][3];
         
         
