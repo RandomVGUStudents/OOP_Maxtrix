@@ -2,21 +2,45 @@
 
 input_box default_input_box_size = {70, 50};
 
+extern Texture2D Toggle_Button;
+
 MatrixSize is_three_by_three;
 
 void MatrixSize::mode()
 {
     is_three_by_three.rect = { screenWidth/2, screenHeight/2 - 220, 50, 50 }; // Button. 
-    DrawRectangleRounded(is_three_by_three.rect, 0.5, 6, LIGHTGRAY);
+    DrawRectangleRounded(is_three_by_three.rect, roundness, segments, LIGHTGRAY);
     DrawTexture(Toggle_Button, is_three_by_three.rect.x, is_three_by_three.rect.y, WHITE);
 
     if(CheckCollisionPointRec(GetMousePosition(), is_three_by_three.rect)) // Mode lever.
     {
-        DrawRectangleRounded(is_three_by_three.rect, 0.5, 6, TRANSPARENT_BEIGE);
+        DrawRectangleRounded(is_three_by_three.rect, roundness, segments, TRANSPARENT_BEIGE);
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !is_three_by_three.state)
-        {is_three_by_three.state = true;}
+        {
+            is_three_by_three.state = true;
+            matrix.columns = 2; matrix.rows = 2;
+        }
         else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && is_three_by_three.state)
-        {is_three_by_three.state = false;}
+        {
+            is_three_by_three.state = false;
+            matrix.columns = 3; matrix.rows = 3;
+        }
+    }
+}
+
+ArrayDeclaration is_clear;
+extern Texture2D Clear_Button;
+
+void ArrayDeclaration::clear()
+{
+    is_clear.rect = { screenWidth/2, screenHeight/2 - 160, 50, 50 }; // Button. 
+    DrawRectangleRounded(is_clear.rect, roundness, segments, LIGHTGRAY);
+    DrawTexture(Clear_Button, is_clear.rect.x, is_clear.rect.y, WHITE);
+
+    if(CheckCollisionPointRec(GetMousePosition(), is_clear.rect)) // Mode lever.
+    {
+        DrawRectangleRounded(is_clear.rect, roundness, segments, TRANSPARENT_BEIGE);
+
     }
 }
 
@@ -24,8 +48,6 @@ ArrayDeclaration box[3][3], matrix;
 
 void ArrayDeclaration::designating_box()
 {
-    matrix.columns = 4; matrix.columns = 4; // Determine the matrix size.
-
     float offset_y = 80, offset_x = 300;
     for(int t = 0; t < matrix.columns; ++t)
     { 
@@ -41,22 +63,17 @@ void ArrayDeclaration::designating_box()
 
 void ArrayDeclaration::draws()
 {
-    if(!is_three_by_three.state)
-    {matrix.columns = 2; matrix.rows = 2;}
-    else if(is_three_by_three.state == true)
-    {matrix.columns = 3; matrix.columns = 3;}
-
     for(int t = 0; t < matrix.columns; ++t)
     {
         for(int u = 0; u < matrix.columns; ++u)
         {
-            DrawRectangleRounded(box[t][u].rect, 0.5, 6, LIGHTGRAY); 
+            DrawRectangleRounded(box[t][u].rect, roundness, segments, LIGHTGRAY); 
             
             if(CheckCollisionPointRec(GetMousePosition(),box[t][u].rect)) box[t][u].mouse_over_box = true;
             else box[t][u].mouse_over_box = false;
             if(box[t][u].mouse_over_box)
             {
-                DrawRectangleRounded(box[t][u].rect, 0.5, 6, BEIGE);
+                DrawRectangleRounded(box[t][u].rect, roundness, segments, BEIGE);
                 if(IsMouseButtonDown(MOUSE_BUTTON_LEFT)) 
                 {
                     box[t][u].clicked_uppon = 2;
@@ -81,8 +98,8 @@ void ArrayDeclaration::registering_number()
         {
             if (box[t][u].clicked_uppon == 2)
             {
-                DrawRectangleRounded(box[t][u].rect, 0.5, 6, BEIGE);
-                DrawRectangleRoundedLines(box[t][u].rect, 0.5, 6, 4, BLACK);
+                DrawRectangleRounded(box[t][u].rect, roundness, segments, BEIGE);
+                DrawRectangleRoundedLines(box[t][u].rect, roundness, segments, 4, BLACK);
 
                 //Get input from keyboard
                 int key = GetKeyPressed();

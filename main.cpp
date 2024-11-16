@@ -11,15 +11,19 @@ Determinant Solution;
 
 Result Box;
 
-Texture2D Toggle_Button;
+Texture2D Toggle_Button, Back_Arrow, Clear_Button;
 
 int main()
 {
-    Grid.designating_box();
+    
+
     // Initiate Window.
     InitWindow(screenWidth, screenHeight, "Matrix Calculator");
     Toggle_Button = LoadTexture("assets/Toggle_Button.png");
-    SetTargetFPS(12);
+    Back_Arrow = LoadTexture("assets/Back_Arrow.png");
+    Clear_Button = LoadTexture("assets/Clear_Button.png");  
+
+    SetTargetFPS(60);
 
     while(!WindowShouldClose())
     {
@@ -27,19 +31,29 @@ int main()
         ClearBackground(RAYWHITE);
         Main_Menu.uis();
         
-        switch (Mode.state)
+        if(Mode.state == 0) // Selection screen.
         {
-        case 1:
+            Mode.determinant();
+            Mode.inverse();
+        }
+        else if(Mode.state == 1) // Determinant.
+        {
+            Button.mode();
+            Mode.back();
+            Grid.designating_box();
             Grid.draws();
             Grid.registering_number();
-            Button.mode();
+            Grid.clear();
             Solution.determinant();
             Box.designating_output_box_and_draw();
-            break;
-        
-        default:
-            Mode.selection();
-            break;
+        }
+        else if(Mode.state == 2) // Invernse screen.
+        {
+            Mode.back();
+            Button.mode();
+            Grid.designating_box();
+            Grid.draws();
+            Grid.registering_number();
         }
         EndDrawing();
     }

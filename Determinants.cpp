@@ -90,7 +90,7 @@ void Result::designating_output_box_and_draw()
 {
     float offset_x = 100, offset_y = 150;
     output_box.rect = {screenWidth/2.0f, screenHeight/2.0f + offset_y, default_input_box_size.x * 4, default_input_box_size.y };
-    DrawRectangleRounded(output_box.rect, 0.5, 6, LIGHTGRAY);
+    DrawRectangleRounded(output_box.rect, roundness, segments, LIGHTGRAY);
     if(is_three_by_three.state == false)
     {
     DrawText(TextFormat("%.00lf",output_box_value.two_two), output_box.rect.x + 15, output_box.rect.y + 13, number_size, BLACK);

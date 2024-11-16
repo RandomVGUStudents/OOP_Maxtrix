@@ -2,10 +2,9 @@
 #ifndef ModeSelection_hpp
 #define ModeSelection_hpp
 
-
-
 #include "include/Primary.hpp"
 
+extern Texture2D Back_Arrow;
 class State //To define calculator state.
 {
     private:
@@ -17,8 +16,9 @@ class State //To define calculator state.
     int state; //default = 0; determinate = 1;
     bool button_state;
     bool mouse_over_box = false;
-    void selection();
-
+    void inverse();
+    void determinant();
+    void back();
 };
 
 #endif

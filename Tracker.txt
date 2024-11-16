@@ -44,10 +44,18 @@ Main.cpp
 
 
 Checklist: ( < x > done; < o > undone )
-< o > Make a main header where Identifiers.hpp; UserInterface.hpp; Calculations.hpp source from for standart like screenHeight, screenWidth, number_size, font_size, 
+< x > Make a main header where Identifiers.hpp; UserInterface.hpp; Calculations.hpp source from for standart like screenHeight, screenWidth, number_size, font_size, 
+
 < x > Finish making logic for 2x2 and 3x3 determinant.
+
 < x > Your UI should generate visual arrays of empty slots corresponding to the size of an inputted matrix. 
+
 < o > The calculated matrix also needs to be visualized in arrays of slots, each of which represents one matrix entry.
+
 < x > Can perform complicated calculations by facilitating parentheses for term grouping, e.g. (A + B)*C + (D - E)*F.
-< o > (Priority) Can find the inverse of an invertible matrix
+
+< o > (Priority) Can find the inverse of an invertible matrix.
+
+< o > (Priority) Add a clear button for the matrix.
+
 < o > Can solve a linear system.

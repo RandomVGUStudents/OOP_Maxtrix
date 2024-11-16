@@ -18,6 +18,8 @@
 #define screenHeight 600 // ScreenHeight.
 #define number_size 25 // Number font size.
 #define font_size 20 // Font size.
+#define roundness 0.5 // roundness of a rect.
+#define segments 6 // Segemnts of a curve.
 
 extern Color TRANSPARENT_BEIGE;
 

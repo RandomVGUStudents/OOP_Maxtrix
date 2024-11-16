@@ -9,9 +9,6 @@
 struct input_box {float x, y;};
 
 extern struct input_box default_input_box_size;
-
-extern Texture2D Toggle_Button;
-
 class ArrayDeclaration 
 {
     private:
@@ -34,6 +31,7 @@ class ArrayDeclaration
     int clicked_uppon = 0; // 0 is clear, 1 is hover, 2 is clicked
     void registering_number();
     void designating_box(); 
+    void clear();
     void draws();
 };
 
