@@ -138,7 +138,7 @@ void ArrayDeclaration::registering_number()
                 if (key == KEY_BACKSPACE && box[t][u].inputNumber.empty()) box[t][u].numbersArray = 0;
 
                 //Terminal troubleshooting.
-                printf("box[%d][%d] = %.00lf \n", t, u, box[t][u].numbersArray);
+                //printf("box[%d][%d] = %.00lf \n", t, u, box[t][u].numbersArray);
             }
                 // Display the input number so far
             if (!box[t][u].inputNumber.empty()) DrawText((box[t][u].inputNumber).c_str(), box[t][u].rect.x + 10, box[t][u].rect.y + 13, number_size, BLACK);

@@ -13,6 +13,7 @@
 #include "ModeSelection.hpp"
 #include "UserInterface.hpp"
 #include "Determinants.hpp"
+#include "Cofactors.hpp"
 
 #define screenWidth 800 // ScreenWidth.
 #define screenHeight 600 // ScreenHeight.

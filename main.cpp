@@ -7,9 +7,11 @@ ArrayDeclaration Grid;
 
 MatrixSize Button;
 
-Determinant Solution;
+Determinant Solution1;
 
 Result Box;
+
+Cofactor Solution2;
 
 Texture2D Toggle_Button, Back_Arrow, Clear_Button;
 
@@ -33,27 +35,34 @@ int main()
         
         if(Mode.state == 0) // Selection screen.
         {
-            Mode.determinant();
+            Mode.determinant_logic();
             Mode.inverse();
         }
         else if(Mode.state == 1) // Determinant.
         {
-            Button.mode();
             Mode.back();
+            Button.mode();
+        
             Grid.designating_box();
             Grid.draws();
             Grid.registering_number();
             Grid.clear();
-            Solution.determinant();
+
+            Solution1.determinant_logic();
             Box.designating_output_box_and_draw();
         }
         else if(Mode.state == 2) // Invernse screen.
         {
             Mode.back();
             Button.mode();
+            
             Grid.designating_box();
             Grid.draws();
             Grid.registering_number();
+            Grid.clear();
+
+            Solution2.cofactor_logic();
+
         }
         EndDrawing();
     }

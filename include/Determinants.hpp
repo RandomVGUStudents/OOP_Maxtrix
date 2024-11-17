@@ -4,14 +4,15 @@
 #define Determinants_hpp
 
 // Custom headers
-#include "MatrixArray.hpp"
+#include "Primary.hpp"
+
 class Determinant
 {
     private:
     public:
     
-    void determinant();
-    double top, bottom, pivod;
+    void determinant_logic();
+    double product_top, product_bottom, pivod;
 };
 
 class Result

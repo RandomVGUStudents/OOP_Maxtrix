@@ -2,7 +2,7 @@
 
 Determinant tempor_value[3];
 
-void Determinant::determinant()
+void Determinant::determinant_logic()
 {
     for(int a = 0; a < matrix.columns; ++a) // Matrix.columns = 3.
     {

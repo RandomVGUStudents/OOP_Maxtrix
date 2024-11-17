@@ -20,7 +20,7 @@ void State::back()
     
 } 
 
-void State::determinant()
+void State::determinant_logic()
 {
     button[2].rect = {screenWidth/2 - 100, screenHeight/2 - 200, 200, 50};
     DrawRectangleRounded(button[2].rect, roundness, segments, LIGHTGRAY);

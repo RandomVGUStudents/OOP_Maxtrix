@@ -51,7 +51,7 @@ Main.cpp
         #define
 
         class Determinant
-            void determinant();
+            void determinant_logic();
 
         class Result
             void designating_output_box_and_draw(); // Defining output box and drawing it.
@@ -62,7 +62,7 @@ Main.cpp
 
         class State
             void inverse();
-            void determinant();
+            void determinant_logic();
             void back();
 
 
