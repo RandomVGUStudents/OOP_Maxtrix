@@ -59,6 +59,7 @@ Main.cpp
     
 
     - ModeSelection.hpp/.cpp 
+        #define
 
         class State
             void inverse();
