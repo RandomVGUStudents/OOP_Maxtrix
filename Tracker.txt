@@ -79,7 +79,7 @@ Checklist: ( < x > done; < o > undone )
 
 < o > (Priority) Can find the inverse of an invertible matrix.
     
-    < x > Cofactor.
+    < x > Cofactor. (Can only run for 3x3 matrixes)
 
 < x > (Priority) Add a clear button for the matrix.
 
