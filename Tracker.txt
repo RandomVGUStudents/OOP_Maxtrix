@@ -37,7 +37,7 @@ Main.cpp
         extern ArrayDeclaration matrix, box[3][3];
         
         class MatrixSize
-            void mode();
+            void mode(); // Switch between 2x2 and 3x3
 
         extern MatrixSize is_three_by_three;
 
