@@ -6,8 +6,8 @@ void Determinant::determinant()
 {
     for(int a = 0; a < matrix.columns; ++a) // Matrix.columns = 3.
     {
-        tempor_value[a].top = 1;
-        tempor_value[a].bottom = 1;
+        tempor_value[a].product_top = 1;
+        tempor_value[a].product_bottom = 1;
     } // Adding a value to tempor_value so that it can be multiply with the matrix.
 
     if(is_three_by_three.state == false)
@@ -48,32 +48,32 @@ void Determinant::determinant()
                 {
                     if( t != a && clk == 0)
                     {
-                        tempor_value[a].top *= box[t][u].numbersArray;
+                        tempor_value[a].product_top *= box[t][u].numbersArray;
                         clk = 2;
-                        std::cout << "Top box[" << t << "]" << "[" << u << "] = " << box[t][u].numbersArray << std::endl; // For troubleshooting
+                        std::cout << "product_top box[" << t << "]" << "[" << u << "] = " << box[t][u].numbersArray << std::endl; // For troubleshooting
                     }
                     else if ( t != a )
                     {
-                        tempor_value[a].bottom *= box[t][u].numbersArray;
+                        tempor_value[a].product_bottom *= box[t][u].numbersArray;
                         clk -= 1;
-                        std::cout << "Bottom box[" << t << "]" << "[" << u << "] = " << box[t][u].numbersArray << std::endl; // For troubleshooting
+                        std::cout << "product_bottom box[" << t << "]" << "[" << u << "] = " << box[t][u].numbersArray << std::endl; // For troubleshooting
                     }
                 }   
             }
 
-            std::cout << "TEMP VALUE TOP [" << a << "]= " << tempor_value[a].top << std::endl; // For troubleshooting.
-            std::cout << "TEMP VALUE BOTTOM [" << a << "]= " << tempor_value[a].bottom << std::endl <<std::endl; //For troubleshooting.
+            std::cout << "TEMP VALUE product_top [" << a << "]= " << tempor_value[a].product_top << std::endl; // For troubleshooting.
+            std::cout << "TEMP VALUE product_bottom [" << a << "]= " << tempor_value[a].product_bottom << std::endl <<std::endl; //For troubleshooting.
         }
         output_box_value.three_three = 0;
         for(int a = 0; a < 3; ++a)
         {
             if( a == 1 ) 
             {                
-                output_box_value.three_three -= (tempor_value[a].pivod * (tempor_value[a].top - tempor_value[a].bottom));
+                output_box_value.three_three -= (tempor_value[a].pivod * (tempor_value[a].product_top - tempor_value[a].product_bottom));
             }
             else
             {
-                output_box_value.three_three += (tempor_value[a].pivod * (tempor_value[a].top - tempor_value[a].bottom));
+                output_box_value.three_three += (tempor_value[a].pivod * (tempor_value[a].product_top - tempor_value[a].product_bottom));
             }
         
         std::cout << "Stage [" << a << "] output_box_value.three_three = " << output_box_value.three_three << std::endl;

@@ -12,35 +12,58 @@ Instruction for push.
 
 <SYSTEM OF SPAGHETY CODE>
 Main.cpp
-    - main.hpp
+    - Primary.hpp/.cpp
         #define
-            screenHeight, screenWidth
-            number_size, font_size
-            matrix_columns, matrix_rows
+            #define screenWidth 800 // ScreenWidth.
+            #define screenHeight 600 // ScreenHeight.
+            #define number_size 25 // Number font size.
+            #define font_size 20 // Font size.
 
-    - Identifiers.hpp/.cpp
+            #define MAX_DIGITS 4 // Max number that can be entered into a matrix box.
+
+            #define roundness 0.5 // roundness of a rect.
+            #define segments 6 // Segemnts of a curve.
+
+            extern Color TRANSPARENT_BEIGE;
+
+    - MatrixArray.hpp/.cpp
         #define
 
-        class Numbers
-        class Result
+        class ArrayDeclaration
+            void registering_number();
+            void designating_box(); 
+            void clear();
+            void draws();
+        extern ArrayDeclaration matrix, box[3][3];
+        
+        class MatrixSize
+            void mode();
 
         extern MatrixSize is_three_by_three;
-        extern Numbers matrix, box[3][3];
-        
-        
-    - UserInterface.hpp/.cpp <#include Identifiers.hpp>
+
+    - UserInterface.hpp/.cpp 
         #define
 
         class Uis
+            void uis();
 
-    - Calculations.hpp/.cpp <#include Identifiers.hpp>
+    - Determinant.hpp/.cpp 
         #define
 
         class Determinant
+            void determinant();
 
-    - ModeSelection.hpp/.cpp <#include Identifiers.pp>
+        class Result
+            void designating_output_box_and_draw(); // Defining output box and drawing it.
+        extern Result::determinant_result output_box_value;
+    
+
+    - ModeSelection.hpp/.cpp 
 
         class State
+            void inverse();
+            void determinant();
+            void back();
 
 
 Checklist: ( < x > done; < o > undone )
