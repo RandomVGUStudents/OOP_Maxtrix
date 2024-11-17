@@ -40,7 +40,20 @@ void ArrayDeclaration::clear()
     if(CheckCollisionPointRec(GetMousePosition(), is_clear.rect)) // Mode lever.
     {
         DrawRectangleRounded(is_clear.rect, roundness, segments, TRANSPARENT_BEIGE);
-
+        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            for(int t = 0; t < matrix.columns; ++t)
+            {
+                for(int u = 0; u < matrix.rows; ++u)
+                {
+                    box[t][u].numbersArray = 0;
+                    while(!box[t][u].inputNumber.empty())
+                    {
+                        box[t][u].inputNumber.pop_back();
+                    }
+                }
+            }
+        }
     }
 }
 
