@@ -31,7 +31,7 @@ void MatrixSize::mode()
 ArrayDeclaration is_clear;
 extern Texture2D Clear_Button;
 
-void ArrayDeclaration::clear()
+void ArrayDeclaration::clear() // Clear Button function
 {
     is_clear.rect = { screenWidth/2, screenHeight/2 - 160, 50, 50 }; // Button. 
     DrawRectangleRounded(is_clear.rect, roundness, segments, LIGHTGRAY);
@@ -118,7 +118,7 @@ void ArrayDeclaration::registering_number()
                 int key = GetKeyPressed();
                 
                 // Handle numeric input (0-9)
-                if (key >= 48 && key <= 57)  // ASCII codes for '0' to '9'
+                if (key >= 48 && key <= 57 && box[t][u].inputNumber.size() < MAX_DIGITS)    // ASCII codes for '0' to '9' & avoid box overflow.
                 {  
                     box[t][u].inputNumber += (char)key;
                 }
@@ -145,3 +145,4 @@ void ArrayDeclaration::registering_number()
         }
     }
 }
+
