@@ -31,15 +31,18 @@ int main()
     {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        Main_Menu.uis();
+        Main_Menu.uis_initiallizer();
         
         if(Mode.state == 0) // Selection screen.
         {
+            Main_Menu.uis_default();
             Mode.determinant_logic();
             Mode.co_factor();
         }
         else if(Mode.state == 1) // Determinant.
         {
+            Main_Menu.uis_determinant();
+            
             Mode.back();
             Button.mode();
         
@@ -53,6 +56,7 @@ int main()
         }
         else if(Mode.state == 2) // Invernse screen.
         {
+            Main_Menu.uis_cofactor();
             Mode.back();
             Button.mode();
             

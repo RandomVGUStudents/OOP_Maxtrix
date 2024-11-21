@@ -14,7 +14,10 @@ class Uis
     Rectangle rect = {position.x, position.y, size.x, size.y};
     
     public:
-    void uis();
+    void uis_initiallizer();
+    void uis_default();
+    void uis_determinant();
+    void uis_cofactor();
 };
 
 #endif

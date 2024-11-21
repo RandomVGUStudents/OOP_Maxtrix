@@ -45,7 +45,7 @@ Main.cpp
         #define
 
         class Uis
-            void uis();
+            void uis_default()();
 
     - Determinant.hpp/.cpp 
         #define
