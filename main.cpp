@@ -25,7 +25,7 @@ int main()
     Back_Arrow = LoadTexture("assets/Back_Arrow.png");
     Clear_Button = LoadTexture("assets/Clear_Button.png");  
 
-    SetTargetFPS(60);
+    SetTargetFPS(12);
 
     while(!WindowShouldClose())
     {
@@ -36,7 +36,7 @@ int main()
         if(Mode.state == 0) // Selection screen.
         {
             Mode.determinant_logic();
-            Mode.inverse();
+            Mode.co_factor();
         }
         else if(Mode.state == 1) // Determinant.
         {
@@ -62,6 +62,7 @@ int main()
             Grid.clear();
 
             Solution2.cofactor_logic();
+            Solution2.cofactor_draw();
 
         }
         EndDrawing();

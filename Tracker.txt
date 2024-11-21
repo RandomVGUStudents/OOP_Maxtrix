@@ -62,7 +62,7 @@ Main.cpp
         #define
 
         class State
-            void inverse();
+            void co_factor();
             void determinant_logic();
             void back();
 
@@ -78,7 +78,7 @@ Checklist: ( < x > done; < o > undone )
 
 < x > Can perform complicated calculations by facilitating parentheses for term grouping, e.g. (A + B)*C + (D - E)*F.
 
-< o > (Priority) Can find the inverse of an invertible matrix.
+< o > (Priority) Can find the co_factor of an invertible matrix.
     
     < x > Cofactor. (Can only run for 3x3 matrixes)
 

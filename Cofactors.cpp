@@ -50,3 +50,27 @@ void Cofactor::cofactor_logic()
 
     }
 }
+
+void Cofactor::cofactor_draw()
+{
+    float offset_y = 80, offset_x = 30;
+    for(int t = 0; t < matrix.columns; ++t)
+    { 
+        float offset_y_value = 1;
+        for(int u = 0; u < matrix.rows; ++u)
+        {
+            cofactor_value[t][u].rect = {screenWidth/2.0f + offset_x, 250 + offset_y * offset_y_value, default_input_box_size.x, default_input_box_size.y}; // Matrix Boxes
+            offset_y_value++;
+        }
+        offset_x += 90;
+    }   
+
+    for(int t = 0; t < matrix.columns; ++t)
+    {
+        for(int u = 0; u < matrix.columns; ++u)
+        {
+            DrawRectangleRounded(cofactor_value[t][u].rect, roundness, segments, LIGHTGRAY);
+            DrawText(TextFormat("%.00lf",cofactor_value[t][u].number), cofactor_value[t][u].rect.x + 15, cofactor_value[t][u].rect.y + 13, number_size, BLACK);
+        }
+    }
+}

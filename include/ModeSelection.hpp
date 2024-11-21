@@ -16,7 +16,7 @@ class State //To define calculator state.
     int state; //default = 0; determinate = 1;
     bool button_state;
     bool mouse_over_box = false;
-    void inverse();
+    void co_factor();
     void determinant_logic();
     void back();
 };

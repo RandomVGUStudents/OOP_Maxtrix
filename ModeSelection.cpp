@@ -37,11 +37,11 @@ void State::determinant_logic()
     
 }
 
-void State::inverse()
+void State::co_factor()
 {
     button[3].rect = {screenWidth/2 - 100, screenHeight/2 - 130, 200, 50};
     DrawRectangleRounded(button[3].rect, roundness, segments, LIGHTGRAY);
-    DrawText("< Inverse >", button[3].rect.x + 45, button[3].rect.y + 15, font_size, BLACK);
+    DrawText("< Co-Factor >", button[3].rect.x + 35, button[3].rect.y + 15, font_size, BLACK);
     
     if(CheckCollisionPointRec(GetMousePosition(),button[3].rect)) button[3].mouse_over_box = true;
     else if(!CheckCollisionPointRec(GetMousePosition(),button[3].rect)) button[3].mouse_over_box = false;
