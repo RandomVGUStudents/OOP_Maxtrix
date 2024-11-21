@@ -9,6 +9,6 @@ class Cofactor
     Rectangle rect = {position.x, position.y, size.x, size.y};
     public:
     double pivot, productTop, productBottom, number;
-    void cofactor_logic();
-    void cofactor_draw();
+    void cofactor_logic(); // Co factor logic.
+    void cofactor_draw(); // To print out co factor matrix on to the window.
 };
