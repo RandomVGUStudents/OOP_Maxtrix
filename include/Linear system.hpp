@@ -7,8 +7,10 @@ using namespace std;
 
 class LinearSystem {
 public:
-    // Process the entire system (set matrix, solve, and store solution)
-    void LS_logic(const vector<vector<double>>& matrix = {}, const vector<double>& constants = {});
+    // Input from users
+    void inputSystem();
+    // Process to solve the system only
+    void LS_logic();
 
     // Draw the system (matrix, constants, and solution)
     void draw();
