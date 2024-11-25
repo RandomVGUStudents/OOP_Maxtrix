@@ -2,7 +2,7 @@
 #ifndef ModeSelection_hpp
 #define ModeSelection_hpp
 
-#include "include/Primary.hpp"
+#include "Primary.hpp"
 
 extern Texture2D Back_Arrow;
 class State //To define calculator state.
@@ -18,6 +18,7 @@ class State //To define calculator state.
     bool mouse_over_box = false;
     void co_factor();
     void determinant_logic();
+    void LS();
     void back();
 };
 
