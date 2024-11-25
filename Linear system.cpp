@@ -145,7 +145,7 @@ void LinearSystem::draw()
         // If no solution, display a message
         float nosolution_x = start_x + offset_x;
         float nosolution_y = start_y + offset_y + (A.size() + 1) * cell_height;
-        DrawText("Solution is not available. Solve the system first.", nosolution_x, nosolution_y, 20, RED);
+        DrawText("Solution is not available.", nosolution_x, nosolution_y, 20, RED);
     }
 }
 
