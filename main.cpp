@@ -69,6 +69,20 @@ int main()
             Solution2.cofactor_draw();
 
         }
+        else if (Mode.state == 3) // Linear system screen
+        {
+            Main_Menu.uis_LinearSystem();
+            Mode.back();
+            Button.mode();
+
+            Grid.designating_box();
+            Grid.draws();
+            Grid.registering_number();
+            Grid.clear();
+
+            Solution3.LS_logic();
+            Solution3.draw();
+        }
         EndDrawing();
     }
 }
