@@ -13,6 +13,8 @@ Result Box;
 
 Cofactor Solution2;
 
+LinearSystem Solution3;
+
 Texture2D Toggle_Button, Back_Arrow, Clear_Button;
 
 int main()

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <sstream>
 #include <math.h>
+#include <limits>
 
 #include "MatrixArray.hpp"
 #include "ModeSelection.hpp"
