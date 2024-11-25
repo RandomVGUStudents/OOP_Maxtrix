@@ -1,7 +1,7 @@
 #include "include/Primary.hpp"
-#include "ModeSelection.hpp"
+#include "include/ModeSelection.hpp"
 
-State button[3]; //Mode selection.
+State button[4]; //Mode selection.
 
 void State::back()
 {
@@ -53,3 +53,20 @@ void State::co_factor()
     }
     
 }
+void State::LS()
+{
+    button[4].rect = { screenWidth / 2 - 100, screenHeight / 2 - 60, 200, 50 };
+    DrawRectangleRounded(button[4].rect, roundness, segments, LIGHTGRAY);
+    DrawText("< LS >", button[4].rect.x + 35, button[4].rect.y + 15, font_size, BLACK);
+
+    if (CheckCollisionPointRec(GetMousePosition(), button[4].rect)) button[4].mouse_over_box = true;
+    else if (!CheckCollisionPointRec(GetMousePosition(), button[4].rect)) button[4].mouse_over_box = false;
+
+    if (button[4].mouse_over_box)
+    {
+        DrawRectangleRounded(button[3].rect, roundness, segments, TRANSPARENT_BEIGE);
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) state = 3;
+    }
+
+}
+
