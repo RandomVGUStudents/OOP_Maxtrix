@@ -1,47 +1,51 @@
 #include "Linear system.hpp"
 #include "Primary.hpp"
+#include <iostream>
 
 using namespace std;
 
-void LinearSystem::LS_logic(const vector<vector<double>>& matrix, const vector<double>& constants)
+// Method to collect user input
+void LinearSystem::inputSystem()
 {
-    // If arguments are provided, validate and set the system
-    if (!matrix.empty() && !constants.empty()) {
-        if (matrix.size() != matrix[0].size() || constants.size() != matrix.size()) {
-            cout << "Matrix must be square and match the size of constants." << endl;
-            return;
-        }
-        A = matrix;
-        B = constants;
-    }
-    else {
-        // Prompt user to input data for the system
-        int n;
-        cout << "Enter the number of equations: ";
-        cin >> n;
+    int n;
+    cout << "Enter the number of equations: ";
+    cin >> n;
 
-        // Resize and input the coefficient matrix
-        A.resize(n, vector<double>(n));
-        cout << "Enter the coefficients of the matrix (row by row):\n";
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n; ++j) {
-                cout << "A[" << i + 1 << "][" << j + 1 << "]: ";
-                cin >> A[i][j];
-            }
-        }
-
-        // Resize and input the constants vector
-        B.resize(n);
-        cout << "Enter the constants vector:\n";
-        for (int i = 0; i < n; ++i) {
-            cout << "B[" << i + 1 << "]: ";
-            cin >> B[i];
+    // Resize and input the coefficient matrix
+    A.resize(n, vector<double>(n));
+    cout << "Enter the coefficients of the matrix:\n";
+    for (int i = 0; i < n; ++i) 
+    {
+        for (int j = 0; j < n; ++j) 
+        {
+            cout << "A[" << i + 1 << "][" << j + 1 << "]: ";
+            cin >> A[i][j];
         }
     }
 
-    // Ensure the system is properly initialized
-    if (A.empty() || B.empty()) {
+    // Resize and input the constants vector
+    B.resize(n);
+    cout << "Enter the constants vector:\n";
+    for (int i = 0; i < n; ++i) 
+    {
+        cout << "B[" << i + 1 << "]: ";
+        cin >> B[i];
+    }
+}
+
+// Method to solve the linear system
+void LinearSystem::LS_logic()
+{
+    if (A.empty() || B.empty()) 
+    {
         cout << "The system is not initialized properly. Please provide valid inputs." << endl;
+        return;
+    }
+
+    // Ensure the matrix and constants have compatible sizes
+    if (A.size() != A[0].size() || B.size() != A.size()) 
+    {
+        cout << "Matrix must be square and match the size of constants." << endl;
         return;
     }
 
@@ -50,29 +54,37 @@ void LinearSystem::LS_logic(const vector<vector<double>>& matrix, const vector<d
 
     // Augmented Matrix [ A | B ]
     vector<vector<double>> augmented(n, vector<double>(n + 1));
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+    for (int i = 0; i < n; i++) 
+    {
+        for (int j = 0; j < n; j++) 
+        {
             augmented[i][j] = A[i][j];
         }
         augmented[i][n] = B[i];
     }
 
     // Gaussian elimination
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         double pivot = augmented[i][i];
-        if (pivot == 0) {
+        if (pivot == 0) 
+        {
             cout << "The matrix is singular -> can't be solved." << endl;
             return;
         }
 
-        for (int j = i; j <= n; j++) {
+        for (int j = i; j <= n; j++) 
+        {
             augmented[i][j] /= pivot;
         }
 
-        for (int k = 0; k < n; k++) {
-            if (k != i) {
+        for (int k = 0; k < n; k++) 
+        {
+            if (k != i) 
+            {
                 double factor = augmented[k][i];
-                for (int j = i; j <= n; j++) {
+                for (int j = i; j <= n; j++) 
+                {
                     augmented[k][j] -= factor * augmented[i][j];
                 }
             }
@@ -83,11 +95,17 @@ void LinearSystem::LS_logic(const vector<vector<double>>& matrix, const vector<d
     solution.resize(n);
     for (int i = 0; i < n; i++) {
         solution[i] = augmented[i][n];
-        //for debugging
-        cout << " " << solution[i];
+    }
+
+    // Output for debugging
+    cout << "Solution:\n";
+    for (int i = 0; i < n; ++i) 
+    {
+        cout << "x" << i + 1 << " = " << solution[i] << endl;
     }
 }
 
+// Method to draw the system (matrix, constants, and solution)
 void LinearSystem::draw()
 {
     if (A.empty() || B.empty()) {
@@ -132,3 +150,4 @@ void LinearSystem::draw()
         DrawText("Solution is not available. Solve the system first.", nosolution_x, nosolution_y, 20, RED);
     }
 }
+
