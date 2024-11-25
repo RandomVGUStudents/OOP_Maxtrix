@@ -37,14 +37,14 @@ void LinearSystem::LS_logic()
     if (A.empty() || B.empty()) 
     {
         cout << "Please provide valid inputs." << endl;
-        return;
+
     }
 
     // Ensure the right size of matrix
     if (A.size() != A[0].size() || B.size() != A.size()) 
     {
         cout << "Matrix must be square and match the size of constants." << endl;
-        return;
+
     }
 
     // Number of equations
@@ -68,7 +68,7 @@ void LinearSystem::LS_logic()
         if (pivot == 0) 
         {
             cout << "The matrix is singular -> can't be solved." << endl;
-            return;
+  
         }
 
         for (int j = i; j <= n; j++) 
@@ -108,7 +108,7 @@ void LinearSystem::draw()
 {
     if (A.empty() || B.empty()) {
         cout << "The system has not been set. Nothing to draw." << endl;
-        return;
+
     }
 
     // Starting position of the matrix
