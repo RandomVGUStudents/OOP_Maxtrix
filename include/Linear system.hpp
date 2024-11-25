@@ -1,24 +1,20 @@
 #pragma once
 
 #include <vector>
-
+#include "Primary.hpp"
 
 using namespace std;
 
 class LinearSystem {
 public:
-    // Solves the linear system Ax = b
-    vector<double> solve();
+    // Process the entire system (set matrix, solve, and store solution)
+    void LS_logic(const vector<vector<double>>& matrix = {}, const vector<double>& constants = {});
 
-    // Set the matrix A and vector b
-   
-    bool setSystem(const vector<vector<double>>& matrix, const vector<double>& constants);
+    // Draw the system (matrix, constants, and solution)
+    void draw();
 
-    // Get the solution vector
-    const vector<double>& Solution() const;
-
+private:
     vector<vector<double>> A; // Coefficient matrix (2D vector)
-    vector<double> B;              // Constants vector
-    vector<double> solution;       // Solution vector
+    vector<double> B;         // Constants vector
+    vector<double> solution;  // Solution vector
 };
-
