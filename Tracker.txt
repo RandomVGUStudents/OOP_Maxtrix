@@ -85,5 +85,5 @@ Checklist: ( < x > done; < o > undone )
 < x > (Priority) Add a clear button for the matrix.
 
 < o > Can solve a linear system.
-    < x > Finish the calculation 
-    < o > Perform the matrix and solution UI
+    < x > Finish the calculation (Checked
+    < o > Perform the matrix and solution UI (Already have the button but cannot click, also the code still run on the console)
