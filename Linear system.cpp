@@ -4,45 +4,43 @@
 
 using namespace std;
 
-// Method to collect user input
 void LinearSystem::inputSystem()
 {
     int n;
-    cout << "Enter the number of equations: ";
+    cout << "The number of equations: " << endl;
     cin >> n;
 
-    // Resize and input the coefficient matrix
-    A.resize(n, vector<double>(n));
-    cout << "Enter the coefficients of the matrix:\n";
-    for (int i = 0; i < n; ++i) 
+    //Input coefficient matrix
+    A.resize(n, vector<double> (n));
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; ++j) 
+        for (int j = 0; j < n; j++)
         {
-            cout << "A[" << i + 1 << "][" << j + 1 << "]: ";
+            cout << "A[" << i + 1 << "][" << j + 1 << "]: " << endl;
             cin >> A[i][j];
         }
     }
 
-    // Resize and input the constants vector
+    // Input constant vector
     B.resize(n);
-    cout << "Enter the constants vector:\n";
-    for (int i = 0; i < n; ++i) 
+    cout << "Enter the constant vector: " << endl;
+    for (int i = 0; i < n; i++)
     {
-        cout << "B[" << i + 1 << "]: ";
+        cout << "B[" << i + 1 << "]: " << endl;
         cin >> B[i];
     }
 }
 
-// Method to solve the linear system
+// Solving the linear system
 void LinearSystem::LS_logic()
 {
     if (A.empty() || B.empty()) 
     {
-        cout << "The system is not initialized properly. Please provide valid inputs." << endl;
+        cout << "Please provide valid inputs." << endl;
         return;
     }
 
-    // Ensure the matrix and constants have compatible sizes
+    // Ensure the right size of matrix
     if (A.size() != A[0].size() || B.size() != A.size()) 
     {
         cout << "Matrix must be square and match the size of constants." << endl;
@@ -150,4 +148,5 @@ void LinearSystem::draw()
         DrawText("Solution is not available. Solve the system first.", nosolution_x, nosolution_y, 20, RED);
     }
 }
+
 
