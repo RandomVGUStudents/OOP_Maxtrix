@@ -78,12 +78,15 @@ Checklist: ( < x > done; < o > undone )
 
 < x > Can perform complicated calculations by facilitating parentheses for term grouping, e.g. (A + B)*C + (D - E)*F.
 
-< o > (Priority) Can find the co_factor of an invertible matrix.
+< x > (Priority) Can find the co_factor of an invertible matrix.
     
     < x > Cofactor. (Can only run for 3x3 matrixes)
 
 < x > (Priority) Add a clear button for the matrix.
 
 < o > Can solve a linear system.
-    < x > Finish the calculation (Checked
+    < x > Finish the calculation (Checked)
     < o > Perform the matrix and solution UI (Already have the button but cannot click, also the code still run on the console)
+< o > Inverse
+    < x > Calculate the inverse
+    < o > Draw the inverse
