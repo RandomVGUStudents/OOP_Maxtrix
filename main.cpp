@@ -1,6 +1,5 @@
 #include "include/Primary.hpp"
 
-State Mode;
 Uis Main_Menu;
 
 ArrayDeclaration Grid;
@@ -27,7 +26,7 @@ int main()
     Back_Arrow = LoadTexture("assets/Back_Arrow.png");
     Clear_Button = LoadTexture("assets/Clear_Button.png");  
 
-    SetTargetFPS(12);
+    SetTargetFPS(30);
 
     while(!WindowShouldClose())
     {
@@ -35,17 +34,19 @@ int main()
         ClearBackground(RAYWHITE);
         Main_Menu.uis_initiallizer();
         
-        if(Mode.state == 0) // Selection screen.
+        if(btn.state == 0) // Selection screen.
         {
             Main_Menu.uis_default();
-            Mode.determinant_logic();
+            btn.selection();
+            /*Mode.determinant_logic();
             Mode.co_factor();
+            Mode.linear_system();*/
         }
-        else if(Mode.state == 1) // Determinant.
+        else if(btn.state == 1) // Determinant.
         {
             Main_Menu.uis_determinant();
             
-            Mode.back();
+            btn.back();
             Button.mode();
         
             Grid.designating_box();
@@ -56,10 +57,10 @@ int main()
             Solution1.determinant_logic();
             Box.designating_output_box_and_draw();
         }
-        else if(Mode.state == 2) // Invernse screen.
+        else if(btn.state == 2) // Invernse screen.
         {
             Main_Menu.uis_cofactor();
-            Mode.back();
+            btn.back();
             Button.mode();
             
             Grid.designating_box();
@@ -71,10 +72,10 @@ int main()
             Solution2.cofactor_draw();
 
         }
-        else if (Mode.state == 3) // Linear system screen
+        else if (btn.state == 3) // Linear system screen
         {
             Main_Menu.uis_LinearSystem();
-            Mode.back();
+            btn.back();
             Button.mode();
 
             Grid.designating_box();

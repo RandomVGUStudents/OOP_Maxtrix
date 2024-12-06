@@ -27,6 +27,8 @@
 #define roundness 0.5 // roundness of a rect.
 #define segments 6 // Segemnts of a curve.
 
+using namespace std;
+
 extern Color TRANSPARENT_BEIGE;
 
 #endif
