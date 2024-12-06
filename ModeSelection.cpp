@@ -14,16 +14,12 @@ void State::draw( float a, float b, float x, float y,const int n, string name)
 
         button[n].rect = {a, b, x, y};
         DrawRectangleRounded(button[n].rect, roundness, segments, LIGHTGRAY);
-        
         //DrawText( "Determinant" , button[2].rect.x + 25, button[2].rect.y + 15, font_size, BLACK);
-        
         if(CheckCollisionPointRec(GetMousePosition(),button[n].rect)) button[n].mouse_over_box = true;
         else if(!CheckCollisionPointRec(GetMousePosition(),button[n].rect)) {button[n].mouse_over_box = false;}
 
         if( n == 1 )
-        {
-            DrawTexture(Back_Arrow, button[1].rect.x, button[1].rect.y, WHITE); // Draw back button texture.
-        }
+        {DrawTexture(Back_Arrow, button[1].rect.x, button[1].rect.y, WHITE);} // Draw back button texture.
 
         if(button[n].mouse_over_box == true)
         {   
