@@ -78,3 +78,39 @@ void Inverse::calculateInverse()
         }
     }
 }
+
+void Inverse::drawInverse() {
+    if (matrix.empty() || inverse.empty()) {
+        cout << "The matrix has not been set or the inverse is not calculated. Nothing to draw." << endl;
+        return;
+    }
+
+    // Constants for layout
+    float offset_y = 80, offset_x = 30;
+    float cell_width = 100, cell_height = 50;
+    float start_x = 100, start_y = 100;
+    float spacing = 50; // Space between the original matrix and the inverse
+
+    int n = matrix.size();
+
+    // Draw the original matrix
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            Rectangle rect = { start_x + offset_x + j * cell_width, start_y + offset_y + i * cell_height, cell_width, cell_height };
+            DrawRectangleRounded(rect, 0.2, 4, LIGHTGRAY);
+            DrawText(TextFormat("%.2lf", matrix[i][j]), rect.x + 15, rect.y + 15, 20, BLACK);
+        }
+    }
+
+    // Draw a label for the original matrix
+    DrawText("Original Matrix", start_x + offset_x, start_y + offset_y - 40, 20, BLACK);
+
+    // Draw the inverse matrix
+    float inverse_start_x = start_x + offset_x + n * cell_width + spacing;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            Rectangle rect = { inverse_start_x + j * cell_width, start_y + offset_y + i * cell_height, cell_width, cell_height };
+            DrawRectangleRounded(rect, 0.2, 4, LIGHTGRAY);
+            DrawText(TextFormat("%.2lf", inverse[i][j]), rect.x + 15, rect.y + 15, 20, BLACK);
+        }
+    }
