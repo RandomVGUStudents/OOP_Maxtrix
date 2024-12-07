@@ -11,7 +11,7 @@ public:
     // Calculate the inverse of the matrix
     void calculateInverse();
     // Display the original matrix and its inverse
-    void draw();
+    void drawInverse();
 
 private:
     vector<vector<double>> matrix;      // Original matrix
