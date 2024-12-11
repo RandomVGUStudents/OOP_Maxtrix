@@ -1,5 +1,5 @@
-#include "Linear system.hpp"
-#include "Primary.hpp"
+#include "include/Linear system.hpp"
+#include "include/Primary.hpp"
 #include <iostream>
 
 using namespace std;
@@ -7,11 +7,17 @@ using namespace std;
 void LinearSystem::inputSystem()
 {
     int n;
-    cout << "The number of equations: " << endl;
+    cout << "Enter the size of the matrix (2 for 2x2, 3 for 3x3): " << endl;
     cin >> n;
 
-    //Input coefficient matrix
-    A.resize(n, vector<double> (n));
+    if (n != 2 && n != 3)
+    {
+        cout << "Only 2x2 and 3x3 matrices are supported." << endl;
+        return;
+    }
+
+    // Input coefficient matrix
+    A.resize(n, vector<double>(n));
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
@@ -34,17 +40,17 @@ void LinearSystem::inputSystem()
 // Solving the linear system
 void LinearSystem::LS_logic()
 {
-    if (A.empty() || B.empty()) 
+    if (A.empty() || B.empty())
     {
         cout << "Please provide valid inputs." << endl;
-
+        return;
     }
 
     // Ensure the right size of matrix
-    if (A.size() != A[0].size() || B.size() != A.size()) 
+    if (A.size() != A[0].size() || B.size() != A.size())
     {
         cout << "Matrix must be square and match the size of constants." << endl;
-
+        return;
     }
 
     // Number of equations
@@ -52,9 +58,9 @@ void LinearSystem::LS_logic()
 
     // Augmented Matrix [ A | B ]
     vector<vector<double>> augmented(n, vector<double>(n + 1));
-    for (int i = 0; i < n; i++) 
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++) 
+        for (int j = 0; j < n; j++)
         {
             augmented[i][j] = A[i][j];
         }
@@ -65,23 +71,23 @@ void LinearSystem::LS_logic()
     for (int i = 0; i < n; i++)
     {
         double pivot = augmented[i][i];
-        if (pivot == 0) 
+        if (pivot == 0)
         {
             cout << "The matrix is singular -> can't be solved." << endl;
-  
+            return;
         }
 
-        for (int j = i; j <= n; j++) 
+        for (int j = i; j <= n; j++)
         {
             augmented[i][j] /= pivot;
         }
 
-        for (int k = 0; k < n; k++) 
+        for (int k = 0; k < n; k++)
         {
-            if (k != i) 
+            if (k != i)
             {
                 double factor = augmented[k][i];
-                for (int j = i; j <= n; j++) 
+                for (int j = i; j <= n; j++)
                 {
                     augmented[k][j] -= factor * augmented[i][j];
                 }
@@ -97,7 +103,7 @@ void LinearSystem::LS_logic()
 
     // Output for debugging
     cout << "Solution:\n";
-    for (int i = 0; i < n; ++i) 
+    for (int i = 0; i < n; ++i)
     {
         cout << "x" << i + 1 << " = " << solution[i] << endl;
     }
@@ -108,7 +114,7 @@ void LinearSystem::draw()
 {
     if (A.empty() || B.empty()) {
         cout << "The system has not been set. Nothing to draw." << endl;
-
+        return;
     }
 
     // Starting position of the matrix
@@ -148,5 +154,3 @@ void LinearSystem::draw()
         DrawText("Solution is not available.", nosolution_x, nosolution_y, 20, RED);
     }
 }
-
-
