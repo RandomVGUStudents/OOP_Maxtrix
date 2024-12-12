@@ -39,9 +39,6 @@ int main()
         {
             Main_Menu.uis_default();
             btn.selection();
-            /*Mode.determinant_logic();
-            Mode.co_factor();
-            Mode.linear_system();*/
         }
         else if(btn.state == 2) // Determinant.
         {
@@ -82,11 +79,21 @@ int main()
 
             Solution2.cofactor_logic();
             Solution2_1.transpose_logic();
-
-
-
         }
-        else if (btn.state == 4) // Linear system screen
+
+        else if (btn.state == 4) // Adjoint
+        {
+            Main_Menu.uis_adjoint();
+            btn.back();
+            Button.mode(); // Change matrix size.
+
+            Grid.designating_box();
+            Grid.draws();
+            Grid.registering_number();
+            Grid.clear();
+        }
+
+        else if (btn.state == 5) // Linear system screen
         {
             Main_Menu.uis_LinearSystem();
             btn.back();
@@ -100,6 +107,7 @@ int main()
             Solution3.LS_logic();
             Solution3.draw();
         }
+
         EndDrawing();
     }
 }

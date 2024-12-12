@@ -15,7 +15,7 @@ class State //To define calculator state.
 
     
     public:
-    int state = 1; //default = 1; determinate = 2; Co Factor = 3; linear system = 4;
+    int state = 1; //default = 1; determinate = 2; Co Factor = 3; adjoint = 4; linear system = 5;
     bool button_state;
     bool mouse_over_box = false;
 

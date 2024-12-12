@@ -1,7 +1,7 @@
 #include "include/Primary.hpp"
 #include "include/ModeSelection.hpp"
 
-State button[6]; //Mode selection.
+State button[7]; //Mode selection.
 State btn;
 
 
@@ -45,12 +45,13 @@ void State::trans_switch()
 void State::back()
 {
     btn.draw(20, 40, 50, 50, 1, 1, 0, "Back");
-} 
+}
 
 void State::selection()
 {
     btn.draw(screenWidth/2 - 100, screenHeight/2 - 200, 200, 50, 2, 2, 1, "Determinant");
     btn.draw(screenWidth/2 - 100, screenHeight/2 - 130, 200, 50, 3, 3, 1, "Co_factor");
-    btn.draw(screenWidth / 2 - 100, screenHeight / 2 - 60, 200, 50, 4, 4, 1, "Linear_system");
+    btn.draw(screenWidth/2 - 100, screenHeight / 2 - 60, 200, 50, 4, 4, 1, "Adjoint");
+    btn.draw(screenWidth/2 - 100, screenHeight / 2 + 10, 200, 50, 5, 5, 1, "Linear_system");
 }
 

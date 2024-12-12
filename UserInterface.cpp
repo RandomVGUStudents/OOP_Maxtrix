@@ -26,7 +26,11 @@ void Uis::uis_cofactor()
 {
     DrawText("MATRIX CO-FACTOR",matrix_calculator.rect.x + 50, matrix_calculator.rect.y + 5, font_size, BLACK);
 }
+void Uis::uis_adjoint()
+{
+    DrawText("ADJOINT",matrix_calculator.rect.x + 100, matrix_calculator.rect.y + 5, font_size, BLACK);
+}
 void Uis::uis_LinearSystem()
 {
-    DrawText("LINEAR SYSTEM", matrix_calculator.rect.x + 50, matrix_calculator.rect.y + 5, font_size, BLACK);
+    DrawText("LINEAR SYSTEM", matrix_calculator.rect.x + 70, matrix_calculator.rect.y + 5, font_size, BLACK);
 }
