@@ -1,4 +1,4 @@
-#include "Inverse.hpp"
+/*#include "Inverse.hpp"
 #include <iostream>
 
 using namespace std;
@@ -113,4 +113,4 @@ void Inverse::drawInverse() {
             DrawRectangleRounded(rect, 0.2, 4, LIGHTGRAY);
             DrawText(TextFormat("%.2lf", inverse[i][j]), rect.x + 15, rect.y + 15, 20, BLACK);
         }
-    }
+    }*/

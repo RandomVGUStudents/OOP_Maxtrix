@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include <vector>
 
@@ -16,4 +16,4 @@ public:
 private:
     vector<vector<double>> matrix;      // Original matrix
     vector<vector<double>> inverse;     // Inverse matrix
-};
+};*/
