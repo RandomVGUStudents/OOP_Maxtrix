@@ -4,6 +4,7 @@ Cofactor temp_value[3][3], cofactor_value[3][3];
 
 void Cofactor::cofactor_logic() // Co factor logic.
 {    
+
     for( int a = 0; a < matrix.columns; ++a ) // To give all temp_value[][]. an initial value of multiplication.
     {
         for( int b = 0; b < matrix.rows; ++b )

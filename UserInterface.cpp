@@ -28,5 +28,5 @@ void Uis::uis_cofactor()
 }
 void Uis::uis_LinearSystem()
 {
-    DrawText("LinearSystem", matrix_calculator.rect.x + 50, matrix_calculator.rect.y + 5, font_size, BLACK);
+    DrawText("LINEAR SYSTEM", matrix_calculator.rect.x + 50, matrix_calculator.rect.y + 5, font_size, BLACK);
 }

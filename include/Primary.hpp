@@ -15,6 +15,7 @@
 #include "UserInterface.hpp"
 #include "Determinants.hpp"
 #include "Cofactors.hpp"
+#include "Transpose.hpp"
 #include "Linear System.hpp"
 
 #define screenWidth 800 // ScreenWidth.

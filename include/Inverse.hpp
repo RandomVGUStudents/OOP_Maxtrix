@@ -1,3 +1,24 @@
+#pragma once 
+#ifndef Inverse_hpp
+#define Inverse_hpp
+
+#include "Primary.hpp"
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif
+
+
 /*#pragma once
 
 #include <vector>

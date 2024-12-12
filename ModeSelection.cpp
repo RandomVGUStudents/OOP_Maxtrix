@@ -1,11 +1,11 @@
 #include "include/Primary.hpp"
 #include "include/ModeSelection.hpp"
 
-State button[4]; //Mode selection.
+State button[6]; //Mode selection.
 State btn;
 
 
-void State::draw( float a , float b, float x, float y,const int n, const int name_enable, const char* name)
+void State::draw( float a , float b, float x, float y,const int n, const int state_determine, const int name_enable, const char* name)
     {
 
         button[n].rect = {a, b, x, y};
@@ -18,28 +18,39 @@ void State::draw( float a , float b, float x, float y,const int n, const int nam
         else if(!CheckCollisionPointRec(GetMousePosition(),button[n].rect)) {button[n].mouse_over_box = false;}
 
         if( n == 1 )
-        {DrawTexture(Back_Arrow, button[1].rect.x, button[1].rect.y, WHITE);} // Draw back button texture.
+        {DrawTexture(Back_Arrow, button[n].rect.x, button[n].rect.y, WHITE);} // Draw back button texture.
 
         if(button[n].mouse_over_box == true)
         {   
             DrawRectangleRounded(button[n].rect, roundness, segments, TRANSPARENT_BEIGE);
             if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) 
             {
-                btn.state = n - 1;
+                btn.state = state_determine;
             }
         }
     }
 
+void State::cofact_switch()
+{
+    btn.draw( screenWidth/2 - 200, screenHeight/2 + 190, 155, 50, 5, 3, 1, "Disabled" );
+    DrawText( "Transpose:" , screenWidth/2 - 330, screenHeight/2 + 205, font_size, BLACK);
+}
+
+void State::trans_switch()
+{
+    btn.draw( screenWidth/2 - 200, screenHeight/2 + 190, 155, 50, 6, 31, 1, "Enabled" );
+    DrawText( "Transpose:" , screenWidth/2 - 330, screenHeight/2 + 205, font_size, BLACK);
+}
+
 void State::back()
 {
-    btn.draw(20, 40, 50, 50, 1, 0, "back");
+    btn.draw(20, 40, 50, 50, 1, 1, 0, "Back");
 } 
 
 void State::selection()
 {
-    btn.draw(screenWidth/2 - 100, screenHeight/2 - 200, 200, 50, 2, 1, "Determinant");
-    btn.draw(screenWidth/2 - 100, screenHeight/2 - 130, 200, 50, 3, 1, "Co_factor");
-    btn.draw( screenWidth / 2 - 100, screenHeight / 2 - 60, 200, 50, 4, 1, "Linear_system");
+    btn.draw(screenWidth/2 - 100, screenHeight/2 - 200, 200, 50, 2, 2, 1, "Determinant");
+    btn.draw(screenWidth/2 - 100, screenHeight/2 - 130, 200, 50, 3, 3, 1, "Co_factor");
+    btn.draw(screenWidth / 2 - 100, screenHeight / 2 - 60, 200, 50, 4, 4, 1, "Linear_system");
 }
-
 

@@ -11,6 +11,7 @@ Determinant Solution1;
 Result Box;
 
 Cofactor Solution2;
+Transpose Solution2_1;
 
 LinearSystem Solution3;
 
@@ -34,7 +35,7 @@ int main()
         ClearBackground(RAYWHITE);
         Main_Menu.uis_initiallizer();
         
-        if(btn.state == 0) // Selection screen.
+        if(btn.state == 1) // Selection screen.
         {
             Main_Menu.uis_default();
             btn.selection();
@@ -42,12 +43,12 @@ int main()
             Mode.co_factor();
             Mode.linear_system();*/
         }
-        else if(btn.state == 1) // Determinant.
+        else if(btn.state == 2) // Determinant.
         {
             Main_Menu.uis_determinant();
             
             btn.back();
-            Button.mode();
+            Button.mode(); // Change matrix size.
         
             Grid.designating_box();
             Grid.draws();
@@ -57,11 +58,22 @@ int main()
             Solution1.determinant_logic();
             Box.designating_output_box_and_draw();
         }
-        else if(btn.state == 2) // Invernse screen.
+        else if(btn.state == 3 || btn.state == 31) // Cofactor screen.
         {
+            if(btn.state == 31)
+            {
+                btn.cofact_switch(); // Switch to cofactor answer print.
+                Solution2_1.transpose_draw();
+            }
+            else
+            {
+                btn.trans_switch(); // Switch to transpose answer print.
+                Solution2.cofactor_draw();
+            }
+
             Main_Menu.uis_cofactor();
             btn.back();
-            Button.mode();
+            Button.mode(); // Change matrix size.
             
             Grid.designating_box();
             Grid.draws();
@@ -69,14 +81,16 @@ int main()
             Grid.clear();
 
             Solution2.cofactor_logic();
-            Solution2.cofactor_draw();
+            Solution2_1.transpose_logic();
+
+
 
         }
-        else if (btn.state == 3) // Linear system screen
+        else if (btn.state == 4) // Linear system screen
         {
             Main_Menu.uis_LinearSystem();
             btn.back();
-            Button.mode();
+            Button.mode(); // Change matrix size.
 
             Grid.designating_box();
             Grid.draws();
