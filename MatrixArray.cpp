@@ -8,9 +8,10 @@ MatrixSize is_three_by_three;
 
 void MatrixSize::mode()
 {
-    is_three_by_three.rect = { screenWidth/2, screenHeight/2 - 220, 50, 50 }; // Button. 
+    is_three_by_three.rect = { screenWidth/2 + 80, screenHeight/2 - 220, 50, 50 }; // Button. 
     DrawRectangleRounded(is_three_by_three.rect, roundness, segments, LIGHTGRAY);
-    DrawTexture(Toggle_Button, is_three_by_three.rect.x, is_three_by_three.rect.y, WHITE);
+    DrawTexture(Toggle_Button, is_three_by_three.rect.x, is_three_by_three.rect.y, WHITE); // Draw change matrix size button.
+    DrawText( "M Size:" , is_three_by_three.rect.x - 80, is_three_by_three.rect.y + 15, font_size, BLACK);
 
     if(CheckCollisionPointRec(GetMousePosition(), is_three_by_three.rect)) // Mode lever.
     {
@@ -33,9 +34,10 @@ extern Texture2D Clear_Button;
 
 void ArrayDeclaration::clear() // Clear Button function
 {
-    is_clear.rect = { screenWidth/2, screenHeight/2 - 160, 50, 50 }; // Button. 
+    is_clear.rect = { screenWidth/2 + 80, screenHeight/2 - 160, 50, 50 }; // Button. 
     DrawRectangleRounded(is_clear.rect, roundness, segments, LIGHTGRAY);
-    DrawTexture(Clear_Button, is_clear.rect.x, is_clear.rect.y, WHITE);
+    DrawTexture(Clear_Button, is_clear.rect.x, is_clear.rect.y, WHITE); // Draw Clear Button Texture.
+    DrawText( "Clear:" , is_clear.rect.x - 80, is_clear.rect.y + 15, font_size, BLACK);
 
     if(CheckCollisionPointRec(GetMousePosition(), is_clear.rect)) // Mode lever.
     {

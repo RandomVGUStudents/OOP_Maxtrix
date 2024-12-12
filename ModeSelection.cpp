@@ -1,7 +1,7 @@
 #include "include/Primary.hpp"
 #include "include/ModeSelection.hpp"
 
-State button[7]; //Mode selection.
+State button[6]; //Mode selection.
 State btn;
 
 
@@ -51,7 +51,7 @@ void State::selection()
 {
     btn.draw(screenWidth/2 - 100, screenHeight/2 - 200, 200, 50, 2, 2, 1, "Determinant");
     btn.draw(screenWidth/2 - 100, screenHeight/2 - 130, 200, 50, 3, 3, 1, "Co_factor");
-    btn.draw(screenWidth/2 - 100, screenHeight / 2 - 60, 200, 50, 4, 4, 1, "Adjoint");
+    btn.draw(screenWidth/2 - 100, screenHeight / 2 - 60, 200, 50, 4, 4, 1, "Inverse");
     btn.draw(screenWidth/2 - 100, screenHeight / 2 + 10, 200, 50, 5, 5, 1, "Linear_system");
 }
 

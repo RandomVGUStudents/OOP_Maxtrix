@@ -1,7 +1,70 @@
 #include "Inverse.hpp"
 
+Inverse inverse_value[3][3]; 
 
+void Inverse::inverse_function(double determinant)
+{
+    for(int a = 0; a < matrix.columns; a++)
+    {
+        for(int b = 0; b < matrix.rows; b++)
+        {
+            //std::cout << "TRANSPOSE VALUE[" <<a<< "][" << b << "] = " << transpose_value[a][b].number << std::endl;
+            //std::cout << "DETERMINANT VALUE LOCATED IN INVERSE.CPP = " << determinant << std::endl;
+            inverse_value[a][b].number = (transpose_value[a][b].number/determinant);
+            std::cout << "INVERSE VALUE[" <<a<< "][" << b << "] = " << inverse_value[a][b].number << std::endl;
+        }
+    }
+}
 
+void Inverse::inverse_logic()
+{
+    if(is_three_by_three.state == true)
+    {
+        inverse_function(output_box_value.three_three);
+    }
+    else if(is_three_by_three.state == false)
+    {
+        inverse_function(output_box_value.two_two);
+    }
+
+}
+
+void Inverse::inverse_draw() 
+{
+    float offset_y = 80, offset_x = 30;
+    for(int t = 0; t < matrix.columns; ++t)
+    { 
+        float offset_y_value = 1;
+        for(int u = 0; u < matrix.rows; ++u)
+        {
+           inverse_value[t][u].rect = {screenWidth/2.0f + offset_x, 250 + offset_y * offset_y_value, default_input_box_size.x, default_input_box_size.y}; // Matrix Boxes
+            offset_y_value++;
+        }
+        offset_x += 90;
+    }   
+    int clk2 = 0;
+    for(int t = 0; t < matrix.columns; ++t)
+    {
+        for(int u = 0; u < matrix.columns; ++u)
+        {
+            DrawRectangleRounded(inverse_value[t][u].rect, roundness, segments, LIGHTGRAY);
+            if( !box[t][u].inputNumber.empty())
+            {
+                clk2++;
+            }
+        }
+    }
+    for(int t = 0; t < matrix.columns; ++t)
+    {
+        for(int u = 0; u < matrix.columns; ++u)
+        {
+            if(clk2 == matrix.columns*matrix.columns)
+            {
+                DrawText(TextFormat("%2.2f",inverse_value[t][u].number), inverse_value[t][u].rect.x + 8, inverse_value[t][u].rect.y + 13, number_size, BLACK);
+            }
+        }
+    }
+}
 
 
 

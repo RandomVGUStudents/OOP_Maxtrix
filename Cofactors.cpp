@@ -45,7 +45,7 @@ void Cofactor::cofactor_logic() // Co factor logic.
                 {cofactor_value[a][b].number = -1 * (temp_value[a][b].productTop - temp_value[a][b].productBottom);}
 
                 // Terminal Trouble shotting.
-                std::cout << "cofactor_value[" << a << "][" << b << "].number = " << cofactor_value[a][b].number << std::endl;
+                //std::cout << "cofactor_value[" << a << "][" << b << "].number = " << cofactor_value[a][b].number << std::endl;
             }
         }
     }
@@ -104,7 +104,7 @@ void Cofactor::cofactor_draw()
         {
             if(clk2 == matrix.columns*matrix.columns)
             {
-                DrawText(TextFormat("%.00lf",cofactor_value[t][u].number), cofactor_value[t][u].rect.x + 15, cofactor_value[t][u].rect.y + 13, number_size, BLACK);
+                DrawText(TextFormat("%2.2f",cofactor_value[t][u].number), cofactor_value[t][u].rect.x + 15, cofactor_value[t][u].rect.y + 13, number_size, BLACK);
             }
         }
     }

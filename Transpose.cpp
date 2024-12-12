@@ -51,7 +51,7 @@ void Transpose::transpose_draw()
         {
             if(clk2 == matrix.columns*matrix.columns)
             {
-                DrawText(TextFormat("%.00lf",transpose_value[t][u].number), transpose_value[t][u].rect.x + 15, transpose_value[t][u].rect.y + 13, number_size, BLACK);
+                DrawText(TextFormat("%2.2f",transpose_value[t][u].number), transpose_value[t][u].rect.x + 15, transpose_value[t][u].rect.y + 13, number_size, BLACK);
             }
         }
     }

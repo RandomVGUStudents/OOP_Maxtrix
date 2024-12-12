@@ -12,8 +12,9 @@ Result Box;
 
 Cofactor Solution2;
 Transpose Solution2_1;
+Inverse Solution3;
 
-LinearSystem Solution3;
+LinearSystem Solution4;
 
 Texture2D Toggle_Button, Back_Arrow, Clear_Button;
 
@@ -81,16 +82,31 @@ int main()
             Solution2_1.transpose_logic();
         }
 
-        else if (btn.state == 4) // Adjoint
+        else if (btn.state == 4) // Inverse
         {
-            Main_Menu.uis_adjoint();
+            Main_Menu.uis_inverse();
             btn.back();
             Button.mode(); // Change matrix size.
 
+            // To initiate the intial matrix input box and button for change size and clear.
             Grid.designating_box();
             Grid.draws();
             Grid.registering_number();
             Grid.clear();
+
+            // Determinant logic. 
+            Solution1.determinant_logic();
+
+            // Co factor logic.
+            Solution2.cofactor_logic();
+
+            // Transpose logic.
+            Solution2_1.transpose_logic();
+
+            // Inverse logic.
+            Solution3.inverse_logic();
+            Solution3.inverse_draw();
+            
         }
 
         else if (btn.state == 5) // Linear system screen
@@ -104,8 +120,8 @@ int main()
             Grid.registering_number();
             Grid.clear();
 
-            Solution3.LS_logic();
-            Solution3.draw();
+            Solution4.LS_logic();
+            Solution4.draw();
         }
 
         EndDrawing();

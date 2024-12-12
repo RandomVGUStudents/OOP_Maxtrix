@@ -18,7 +18,7 @@ class Uis
     void uis_default();
     void uis_determinant();
     void uis_cofactor();
-    void uis_adjoint();
+    void uis_inverse();
     void uis_LinearSystem();
 };
 

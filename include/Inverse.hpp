@@ -4,18 +4,18 @@
 
 #include "Primary.hpp"
 
+class Inverse
+{
+    private:
+    Vector2 position, size;
+    Rectangle rect = {position.x, position.y, size.x, size.y};
 
-
-
-
-
-
-
-
-
-
-
-
+    public:
+    double number;
+    void inverse_logic();
+    void inverse_function(double determinant);
+    void inverse_draw();
+};
 #endif
 
 
