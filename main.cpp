@@ -43,8 +43,11 @@ int main()
         }
         else if(btn.state == 2) // Determinant.
         {
+            Grid.calculate = "Determinant";
+
             Main_Menu.uis_determinant();
-            
+         
+
             btn.back();
             Button.mode(); // Change matrix size.
         
@@ -58,6 +61,8 @@ int main()
         }
         else if(btn.state == 3 || btn.state == 31) // Cofactor screen.
         {
+            Grid.calculate = "Cofactor";
+
             if(btn.state == 31)
             {
                 btn.cofact_switch(); // Switch to cofactor answer print.
@@ -84,6 +89,9 @@ int main()
 
         else if (btn.state == 4) // Inverse
         {
+          
+            Grid.calculate = "Inverse";
+
             Main_Menu.uis_inverse();
             btn.back();
             Button.mode(); // Change matrix size.
@@ -111,6 +119,9 @@ int main()
 
         else if (btn.state == 5) // Linear system screen
         {
+           
+            Grid.calculate = "Linear";
+
             Main_Menu.uis_LinearSystem();
             btn.back();
             Button.mode(); // Change matrix size.
