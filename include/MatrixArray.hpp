@@ -20,6 +20,16 @@ class ArrayDeclaration : protected RECTANGLE
     bool numberEntered = false;
     float value = 0;
 
+    std::string calculate = "";
+
+    //Interaction
+    bool mouse_over_box = false;    
+    int clicked_uppon = 0; // 0 is clear, 1 is hover, 2 is clicked
+    void registering_number();
+    void designating_box(); 
+    void clear();
+    void draws();
+
     //Interaction
     bool mouse_over_box = false;    
     int clicked_uppon = 0; // 0 is clear, 1 is hover, 2 is clicked
@@ -30,6 +40,8 @@ class ArrayDeclaration : protected RECTANGLE
 };
 
 extern ArrayDeclaration matrix, box[3][3];
+extern ArrayDeclaration linearValue[1][3], linear;
+extern ArrayDeclaration Grid;
 
 class MatrixSize : protected RECTANGLE
 {
