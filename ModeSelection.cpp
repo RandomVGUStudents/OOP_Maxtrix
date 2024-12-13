@@ -45,6 +45,12 @@ void State::trans_switch()
 void State::back()
 {
     btn.draw(20, 40, 50, 50, 1, 1, 0, "Back");
+    Rectangle rect = { 20, 40, 50, 50 };
+    int fontSize = 30;
+     Vector2 textSize = MeasureTextEx(GetFontDefault(), "<", fontSize, 1);
+     float textX = rect.x + (rect.width - textSize.x) / 2;
+     float textY = rect.y + (rect.height - textSize.y) / 2;
+     DrawText("<", textX, textY, fontSize, DARKBLUE);
 }
 
 void State::selection()
