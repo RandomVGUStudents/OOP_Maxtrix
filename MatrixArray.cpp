@@ -8,11 +8,21 @@ MatrixSize is_three_by_three;
 
 void MatrixSize::mode()
 {
+    bool isLinear = Grid.calculate == "Linear";
+    float width = screenWidth / 2;
+    if (isLinear) width += 100;
+    
     is_three_by_three.rect = { screenWidth/2 + 80, screenHeight/2 - 220, 50, 50 }; // Button. 
     DrawRectangleRounded(is_three_by_three.rect, roundness, segments, LIGHTGRAY);
     DrawTexture(Toggle_Button, is_three_by_three.rect.x, is_three_by_three.rect.y, WHITE); // Draw change matrix size button.
     DrawText( "M Size:" , is_three_by_three.rect.x - 80, is_three_by_three.rect.y + 15, font_size, BLACK);
 
+    int fontSize = 20;
+    Vector2 textSize = MeasureTextEx(GetFontDefault(), "2|3", fontSize, 1);
+    float textX = is_three_by_three.rect.x + (is_three_by_three.rect.width - textSize.x) / 2;
+    float textY = is_three_by_three.rect.y + (is_three_by_three.rect.height - textSize.y) / 2;
+    DrawText("2|3", textX, textY, fontSize, BLACK);
+    
     if(CheckCollisionPointRec(GetMousePosition(), is_three_by_three.rect)) // Mode lever.
     {
         DrawRectangleRounded(is_three_by_three.rect, roundness, segments, TRANSPARENT_BEIGE);
@@ -34,11 +44,20 @@ extern Texture2D Clear_Button;
 
 void ArrayDeclaration::clear() // Clear Button function
 {
+    bool isLinear = calculate == "Linear";
+    float width = screenWidth / 2;
+    if (isLinear) width += 100;
     is_clear.rect = { screenWidth/2 + 80, screenHeight/2 - 160, 50, 50 }; // Button. 
     DrawRectangleRounded(is_clear.rect, roundness, segments, LIGHTGRAY);
     DrawTexture(Clear_Button, is_clear.rect.x, is_clear.rect.y, WHITE); // Draw Clear Button Texture.
     DrawText( "Clear:" , is_clear.rect.x - 80, is_clear.rect.y + 15, font_size, BLACK);
 
+    int fontSize = 20;
+    Vector2 textSize = MeasureTextEx(GetFontDefault(), "CLR", fontSize, 1);
+    float textX = is_clear.rect.x + (is_clear.rect.width - textSize.x) / 2;
+    float textY = is_clear.rect.y + (is_clear.rect.height - textSize.y) / 2;
+    DrawText("CLR", textX, textY, fontSize, BLACK);
+    
     if(CheckCollisionPointRec(GetMousePosition(), is_clear.rect)) // Mode lever.
     {
         DrawRectangleRounded(is_clear.rect, roundness, segments, TRANSPARENT_BEIGE);
@@ -52,6 +71,18 @@ void ArrayDeclaration::clear() // Clear Button function
                     while(!box[t][u].inputNumber.empty())
                     {
                         box[t][u].inputNumber.pop_back();
+                    }
+                }
+            }
+
+        if (calculate == "Linear") 
+        {
+            for (int u = 0; u < matrix.rows; ++u)
+                {
+                    linearValue[0][u].numbersArray = 0;
+                    while (!linearValue[0][u].inputNumber.empty())
+                    {
+                        linearValue[0][u].inputNumber.pop_back();
                     }
                 }
             }
@@ -103,7 +134,34 @@ void ArrayDeclaration::draws()
             }
         }
     }
+
+    if (calculate == "Linear") {
+        for (int u = 0; u < matrix.columns; ++u)
+        {
+            DrawRectangleRounded(linearValue[0][u].rect, roundness, segments, LIGHTGRAY);
+
+            if (CheckCollisionPointRec(GetMousePosition(), linearValue[0][u].rect)) linearValue[0][u].mouse_over_box = true;
+            else linearValue[0][u].mouse_over_box = false;
+            if (linearValue[0][u].mouse_over_box)
+            {
+                DrawRectangleRounded(linearValue[0][u].rect, roundness, segments, BEIGE);
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                {
+                    linearValue[0][u].clicked_uppon = 2;
+                }
+            }
+            if (!linearValue[0][u].mouse_over_box && linearValue[0][u].inputNumber.size() == 0)
+            {
+                if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+                {
+                    linearValue[0][u].clicked_uppon = 0;
+                }
+            }
+        }
+    }
 }
+
+
 
 void ArrayDeclaration::registering_number()
 {   
@@ -144,6 +202,50 @@ void ArrayDeclaration::registering_number()
             }
                 // Display the input number so far
             if (!box[t][u].inputNumber.empty()) DrawText((box[t][u].inputNumber).c_str(), box[t][u].rect.x + 10, box[t][u].rect.y + 13, number_size, BLACK);
+        }
+    }
+
+
+
+    /*
+        New change 1.1
+    */
+    if (calculate == "Linear") {
+        for (int u = 0; u < matrix.columns; ++u)
+        {
+            if (linearValue[0][u].clicked_uppon == 2)
+            {
+                DrawRectangleRounded(linearValue[0][u].rect, roundness, segments, BEIGE);
+                DrawRectangleRoundedLines(linearValue[0][u].rect, roundness, segments, 4, BLACK);
+
+                //Get input from keyboard
+                int key = GetKeyPressed();
+
+                // Handle numeric input (0-9)
+                if (key >= 48 && key <= 57 && linearValue[0][u].inputNumber.size() < MAX_DIGITS)    // ASCII codes for '0' to '9' & avoid box overflow.
+                {
+                    linearValue[0][u].inputNumber += (char)key;
+                }
+
+                //Handle Enter key to confirm input and store the number
+                if (key == KEY_ENTER && !linearValue[0][u].inputNumber.empty())
+                {
+                    int enteredNumber = std::stoi(linearValue[0][u].inputNumber);  // Convert input string to integer
+                    linearValue[0][u].numbersArray = enteredNumber;  // Store the number in the array
+                    // box_1.inputNumber = "";  // Clear the input for the next number (redundent)
+                    linearValue[0][u].numberEntered = true;
+                    linearValue[0][u].clicked_uppon = 0;
+                }
+
+                //Handle Backspace to delete the last digit
+                if (key == KEY_BACKSPACE && !linearValue[0][u].inputNumber.empty()) linearValue[0][u].inputNumber.pop_back();  // Remove the last character
+                if (key == KEY_BACKSPACE && linearValue[0][u].inputNumber.empty()) linearValue[0][u].numbersArray = 0;
+
+                //Terminal troubleshooting.
+                //printf("box[%d][%d] = %.00lf \n", t, u, box[t][u].numbersArray);
+            }
+            // Display the input number so far
+            if (!linearValue[0][u].inputNumber.empty()) DrawText((linearValue[0][u].inputNumber).c_str(), linearValue[0][u].rect.x + 10, linearValue[0][u].rect.y + 13, number_size, BLACK);
         }
     }
 }
