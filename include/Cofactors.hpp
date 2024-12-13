@@ -2,12 +2,8 @@
 
 #include "Primary.hpp"
 
-class Cofactor
+class Cofactor : protected RECTANGLE
 {
-    private:
-    Vector2 position, size;
-    Rectangle rect = {position.x, position.y, size.x, size.y};
-
     public:
     double pivot, productTop, productBottom, number;
     void cofactor_logic(); // Co factor logic.

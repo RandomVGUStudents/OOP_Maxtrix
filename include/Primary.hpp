@@ -1,3 +1,4 @@
+#pragma once
 
 #ifndef Prinary_hpp
 #define Primary_hpp
@@ -9,6 +10,8 @@
 #include <sstream>
 #include <math.h>
 #include <limits>
+
+#include "RECT.hpp"
 
 #include "MatrixArray.hpp"
 #include "ModeSelection.hpp"

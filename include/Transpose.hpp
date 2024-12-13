@@ -4,12 +4,8 @@
 
 #include "Primary.hpp"
 
-class Transpose
+class Transpose : protected RECTANGLE
 {
-    private:
-    Vector2 position, size;
-    Rectangle rect = {position.x, position.y, size.x, size.y};
-
     public:
     double number;
     void transpose_logic();

@@ -9,14 +9,8 @@
 struct input_box {float x, y;};
 
 extern struct input_box default_input_box_size;
-class ArrayDeclaration 
+class ArrayDeclaration : protected RECTANGLE
 {
-    private:
-    //Box
-    Vector2 position;
-    Vector2 size;
-    Rectangle rect = {position.x, position.y, size.x, size.y};
-
     public:
     int rows, columns; // Self explainatory.
 
@@ -37,14 +31,8 @@ class ArrayDeclaration
 
 extern ArrayDeclaration matrix, box[3][3];
 
-class MatrixSize
+class MatrixSize : protected RECTANGLE
 {
-    private:
-    //Box
-    Vector2 position;
-    Vector2 size;
-    Rectangle rect = {position.x, position.y, size.x, size.y};
-
     public:
     bool state = false;
     void mode();

@@ -15,13 +15,8 @@ class Determinant
     double product_top, product_bottom, pivod;
 };
 
-class Result
+class Result : protected RECTANGLE
 {
-    private:
-    Vector2 size;
-    Vector2 position;
-    Rectangle rect = {position.x, position.y, size.x, size.y};
-
     public:
     void designating_output_box_and_draw(); // Defining output box and drawing it.
     struct determinant_result

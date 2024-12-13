@@ -6,14 +6,9 @@
 
 extern Texture2D Back_Arrow;
 
-class State //To define calculator state.
+class State : protected RECTANGLE //To define calculator state.
 {
-    private:
-    Vector2 position;
-    Vector2 size;
-    Rectangle rect = {position.x, position.y, size.x, size.y};
-
-    
+    protected:
     public:
     int state = 1; //default = 1; determinate = 2; Co Factor = 3; adjoint = 4; linear system = 5;
     bool button_state;
