@@ -116,7 +116,7 @@ void LinearSystem::draw()
         float solution_start_y = start_y + offset_y + (A.size() + 1) * cell_height;
 
         for (int i = 0; i < solution.size(); ++i) {
-            Rectangle rectSolution = { solution_start_x + i * cell_width + 20 * i, solution_start_y + 20, cell_width, cell_height };
+            Rectangle rectSolution = { solution_start_x + i * cell_width + 20 * i + 20 * i, solution_start_y + 20 + 20, cell_width, cell_height };
             DrawRectangleRounded(rectSolution, roundness, segments, LIGHTGRAY);
             DrawText(TextFormat("x%d = %.2lf", (int)i + 1, solution[i]), rectSolution.x + 10, rectSolution.y + 15, 20, BLACK);
         }

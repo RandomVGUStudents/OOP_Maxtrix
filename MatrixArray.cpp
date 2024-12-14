@@ -9,8 +9,8 @@ MatrixSize is_three_by_three;
 void MatrixSize::mode()
 {
     float width = screenWidth / 2;
-    if (btn.state == 5) width += 100; // For when it is in linear state so it can be move to make way for another columns of input boxes
-
+    if (btn.state == 5) width += 100; // For when it is in linear state so it can be move to make way for another columns of input boxes.
+    
     is_three_by_three.rect = { width + 80, screenHeight / 2 - 220, 50, 50 }; // Button. 
     DrawRectangleRounded(is_three_by_three.rect, roundness, segments, LIGHTGRAY);
     DrawTexture(Toggle_Button, is_three_by_three.rect.x, is_three_by_three.rect.y, WHITE); // Draw change matrix size button.
@@ -38,9 +38,7 @@ extern Texture2D Clear_Button;
 
 void ArrayDeclaration::clear() // Clear Button function
 {
-    /*
-      New change 1.1
-    */
+
     float width = screenWidth / 2;
     if (btn.state == 5) width += 100; // Make use of the current 'btn.state' already in placed system
 

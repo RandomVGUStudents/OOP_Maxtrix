@@ -43,8 +43,9 @@ int main()
         }
         else if (btn.state == 2) // Determinant.
         {
-            Main_Menu.uis_determinant();
 
+            Main_Menu.uis_determinant();
+         
 
             btn.back();
             Button.mode(); // Change matrix size.
@@ -59,7 +60,7 @@ int main()
         }
         else if (btn.state == 3 || btn.state == 31) // Cofactor screen.
         {
-            if (btn.state == 31)
+            if(btn.state == 31)
             {
                 btn.cofact_switch(); // Switch to cofactor answer print.
                 Solution2_1.transpose_draw();

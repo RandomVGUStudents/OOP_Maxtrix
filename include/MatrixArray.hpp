@@ -30,13 +30,8 @@ public:
     void draws();
 };
 
-extern ArrayDeclaration matrix, box[3][3];
+extern ArrayDeclaration matrix, box[3][3], linearValue[1][3], linear, Grid;
 
-/*
-    New change 1.1
-*/
-extern ArrayDeclaration linearValue[1][3], linear;
-extern ArrayDeclaration Grid;
 
 class MatrixSize : protected RECTANGLE
 {
