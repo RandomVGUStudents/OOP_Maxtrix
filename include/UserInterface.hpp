@@ -13,7 +13,7 @@ class Uis : protected RECTANGLE
     void uis_determinant();
     void uis_cofactor();
     void uis_inverse();
-    void uis_LinearSystem();
+    void uis_linearsystem();
 };
 
 #endif

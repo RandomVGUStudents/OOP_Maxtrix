@@ -30,7 +30,7 @@ void Uis::uis_inverse()
 {
     DrawText("INVERSE",matrix_calculator.rect.x + 100, matrix_calculator.rect.y + 5, font_size, BLACK);
 }
-void Uis::uis_LinearSystem()
+void Uis::uis_linearsystem()
 {
     DrawText("LINEAR SYSTEM", matrix_calculator.rect.x + 70, matrix_calculator.rect.y + 5, font_size, BLACK);
 }

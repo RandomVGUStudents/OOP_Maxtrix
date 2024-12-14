@@ -20,7 +20,7 @@
 #include "Cofactors.hpp"
 #include "Transpose.hpp"
 #include "Inverse.hpp"
-#include "Linear System.hpp"
+#include "LinearSystem.hpp"
 
 #define screenWidth 800 // ScreenWidth.
 #define screenHeight 600 // ScreenHeight.
